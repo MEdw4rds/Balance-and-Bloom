@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'homepage',
     'therapist_profiles'
+    'food'
 ]
 
 SITE_ID = 1
