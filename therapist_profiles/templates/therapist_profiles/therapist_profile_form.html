@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Therapist Profile Form
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Update Your Profile</h1>
+    <form method="post" enctype="multipart/form-data" class="mt-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Save Profile</button>
+    </form>
+</div>
+{% endblock %}
