@@ -52,11 +52,13 @@ INSTALLED_APPS = [
     'allauth.account',
     'cloudinary',
     'homepage',
+    'therapist_profiles'
 ]
 
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/profile/'
 LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_SIGNUP_REDIRECT_URL = '/profile/' 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

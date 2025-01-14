@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Therapist Profile
+    {{ profile.user.username }}'s Profile
 {% endblock %}
 
 {% block content %}
@@ -10,21 +10,23 @@
     <div class="card mt-4">
         <div class="card-body">
             <h5 class="card-title">Bio:</h5>
-            <p class="card-text">{{ profile.bio }}</p>
+            <p class="card-text">{{ profile.bio|default:"No bio available." }}</p>
 
             <h5 class="card-title">Credentials:</h5>
-            <p class="card-text">{{ profile.credentials }}</p>
+            <p class="card-text">{{ profile.credentials|default:"No credentials provided." }}</p>
 
             <h5 class="card-title">Services:</h5>
-            <p class="card-text">{{ profile.services }}</p>
+            <p class="card-text">{{ profile.services|default:"No services listed." }}</p>
 
             {% if profile.photo %}
             <h5 class="card-title">Profile Picture:</h5>
             <img src="{{ profile.photo.url }}" alt="Profile Picture" class="img-fluid rounded">
+            {% else %}
+            <p>No profile picture available.</p>
             {% endif %}
 
             <h5 class="card-title">Availability:</h5>
-            <p class="card-text">{{ profile.availability }}</p>
+            <p class="card-text">{{ profile.availability|default:"No availability set." }}</p>
         </div>
     </div>
 </div>
