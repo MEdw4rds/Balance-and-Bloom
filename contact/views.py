@@ -1,18 +1,18 @@
 from django.shortcuts import render, redirect
-from forms import ContactForm
+from . import forms
 from django.http import HttpResponse
 
 
 def contact(request):
     if request.method == 'POST':
-        form = ContactForm(request.POST)
+        form = forms.ContactForm(request.POST)
         if form.is_valid():
             # Process the form data
             pass
             return redirect('success')
     else:
-        form = ContactForm()
-    return render(request, 'contact.html', {'form': form})
+        form = forms.ContactForm()
+    return render(request, 'contact/contact.html', {'form': form})
 
 
 def success(request):
