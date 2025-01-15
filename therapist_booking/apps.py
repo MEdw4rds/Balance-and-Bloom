@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class WellbeingConfig(AppConfig):
+class TherapistBookingConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'contact'
+    name = 'therapist_booking'
