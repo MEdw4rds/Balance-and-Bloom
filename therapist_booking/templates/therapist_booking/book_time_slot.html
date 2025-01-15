@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static '/css/booking-style.css' %}">
+
+<div class="container bookings-container">
+    <div class="row">
+        <div class="col-12 booking-heading text-center">
+            <h1>Book a Time Slot</h1>
+            <hr class="hr-dark">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 center edit-booking-form">
+            <form method="post" class="forms" action="{% url 'book_time_slot' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn--orange">Book Now</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

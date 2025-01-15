@@ -1,0 +1,98 @@
+/* edit_bookings.html and book_time_slot.html*/
+
+.booking-heading {
+    color: #FFA630;
+}
+
+.bookings-container {
+    text-align: center;
+    padding: 50px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: 50px auto;
+}
+
+
+/* profile.html */
+
+
+.card {
+    max-width: 200px;
+    margin: auto    ;
+}
+
+.user-booking-container {
+    margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.booking-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.booking-item {
+    background-color: white;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    flex: 1 1 calc(33.333% - 10px); /* 3 cards per row on large screens */
+    box-sizing: border-box;
+    max-width: 220px;
+}
+
+.booking-item span {
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+/* booking_success.html */
+
+.checkmark {
+    font-size: 4rem;
+    color: #4CAF50;
+}
+
+.success-container {
+    text-align: center;
+    padding: 50px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: 50px auto;
+}
+
+.success-icon img {
+    width: 100px;
+    height: 100px;
+}
+
+.success-heading {
+    color: #4CAF50;
+}
+
+.action-buttons .btn {
+    display: inline-block;
+    margin: 15px 5px;
+    padding: 10px 20px;
+    background-color: #FFA630;
+    color: #000;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.action-buttons .btn:hover {
+    background-color: #ae7121;
+    color: #fff;
+}

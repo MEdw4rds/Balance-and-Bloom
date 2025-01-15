@@ -10,9 +10,9 @@ class Service(models.Model):
 
 class TherapistProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField(max_length=500, blank=True)
-    credentials = models.TextField(max_length=500, blank=True)
-    services = models.ManyToManyField(Service, blank=True)
+    bio = models.TextField(blank=True)
+    credentials = models.TextField(blank=True)
+    services = models.ManyToManyField(Service, related_name='therapists')  # Dropdown field
     photo = models.ImageField(upload_to='profile_pics/', blank=True)
 
     def __str__(self):

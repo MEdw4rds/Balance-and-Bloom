@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/booking-style.css' %}">
+<link rel="stylesheet" href="{% static 'css/profile-style.css' %}">
+
+<div class="container user-booking-container">
+    <div class="row">
+        <div class="col-12 booking-heading text-center">
+            <h1>{{ user.username }}'s Bookings</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h3>Active Bookings</h3>
+            <hr>
+            <ul class="booking-list">
+                {% for booking in active_bookings %}
+                <li class="booking-item">
+                    <span>Date: {{ booking.date }}<br>Time Slot: {{ booking.time_slot }}</span>
+                    <span>{{ booking.therapist }}</span>
+                    <a href="{% url 'edit_booking' booking.id %}" class="btn btn-info">Edit</a>
+                    <form method="post" action="{% url 'delete_booking' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="bookingoneonone_id" value="{{ booking.id }}">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </li>
+                {% empty %}
+                <li class="booking-item">No active bookings found.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
