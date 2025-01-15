@@ -3,6 +3,7 @@ from . import forms
 from django.http import HttpResponse
 
 
+
 def contact(request):
     if request.method == 'POST':
         form = forms.ContactForm(request.POST)
