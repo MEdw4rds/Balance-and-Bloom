@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect
 from . import forms
 from django.http import HttpResponse
 
-
-
 def contact(request):
     if request.method == 'POST':
         form = forms.ContactForm(request.POST)
@@ -17,4 +15,4 @@ def contact(request):
 
 
 def success(request):
-  return HttpResponse('Success!')
+  return render(request, 'contact/success.html')

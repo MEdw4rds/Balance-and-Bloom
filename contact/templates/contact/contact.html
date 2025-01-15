@@ -4,17 +4,21 @@
 {% block title %}Contact {% endblock %}
 
 {% block content %}
-
-<form action="contact/" method="post">
-    {% csrf_token %}
-    {% for field in form %}
-        <div class="fieldWrapper">
-            {{ field.errors }}
-            {{ field.label_tag }} {{ field }}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h1>Home!</h1>
+            <form action="contact" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="fieldWrapper">
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}
+            </div>
+            {% endfor %}
+            <input type="submit" value="Submit">
+            </form>
         </div>
-    {% endfor %}
-    <input type="submit" value="Submit">
-  </form>
- 
-{% endblock %}
- 
+    </div>
+</div>
+ {% endblock %}
