@@ -1,0 +1,15 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<h2 class="category-list-title">Recipes By Category</h2>             
+<div class="category-list">
+    {% for item in cat_menu_list %}
+    <h4 class="category-item">
+        <a class="category-link" href="{% url 'category' item|slugify  %}">{{ item }}</a>
+    </h4>
+    {% endfor %}
+</div>
+{% endblock %}

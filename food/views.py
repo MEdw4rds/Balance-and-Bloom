@@ -1,14 +1,29 @@
 from django.shortcuts import render, get_object_or_404, reverse
+from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.views import generic
-from .models import Post, Comment
-from .forms import CommentForm
+from django.urls import reverse_lazy, reverse
+from .models import Post, Comment, Category
+from django.utils.decorators import method_decorator
+from functools import wraps
+from django.core.exceptions import PermissionDenied
+from .forms import CommentForm, PostForm
 
-# Create your views here.
+
+def LikeView(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+
+    if post.likes.filter(id=request.user.id).exists():
+        post.likes.remove(request.user)
+    else:
+        post.likes.add(request.user)
+
+    return HttpResponseRedirect(reverse('post_detail', args=[post.slug]))
+
 
 # for post view
 class PostList(generic.ListView):
+
     """
     Returns all published posts in :model:`blog.Post`
     and displays them in a page of six posts.
@@ -22,25 +37,27 @@ class PostList(generic.ListView):
 
     **Template:**
 
-    :template:`blog/index.html`
+    :template:`food/index.html`
     """
+
     queryset = Post.objects.filter(status=1)
-    template_name = "blog/index.html"
+    template_name = "food/index.html"
     paginate_by = 6
 
 
 def post_detail(request, slug):
+
     """
     Display an individual :model:`blog.Post`.
 
     **Context**
 
     ``post``
-        An instance of :model:`blog.Post`.
+    An instance of :model:`blog.Post`.
 
     **Template:**
 
-    :template:`blog/post_detail.html`
+    :template:`food/food.html`
     """
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
@@ -62,7 +79,7 @@ def post_detail(request, slug):
 
     return render(
         request,
-        "blog/post_detail.html",
+        "food/food.html",
         {
             "post": post,
             "comments": comments,
@@ -70,6 +87,27 @@ def post_detail(request, slug):
             "comment_form": comment_form
         },
     )
+
+def CategoryListView(request):
+    cat_menu_list = Category.objects.all()
+    return render(
+        request, 'category_list.html', {'cat_menu_list': cat_menu_list})
+
+
+def CategoryView(request, cats):
+    cats_lower = cats.lower()
+    try:
+        category = Category.objects.get(name__iexact=cats_lower)
+        category_posts = Post.objects.filter(category=category)
+    except Category.DoesNotExist:
+        category_posts = Post.objects.none()
+
+    cat_menu = Category.objects.all()
+
+    return render(request, 'categories.html', {
+        'cats': cats.title(
+        ), 'category_posts': category_posts, 'cat_menu': cat_menu})
+
 
 # for editting comment
 def comment_edit(request, slug, comment_id):
@@ -114,5 +152,14 @@ def comment_delete(request, slug, comment_id):
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
+# for adding categories
+class AddCategoryView(CreateView):
+    model = Category
+    template_name = 'add_category.html'
+    fields = '__all__'
 
-
+    def get_context_data(self, *args, **kwargs):
+        cat_menu = Category.objects.all()
+        context = super(AddCategoryView, self).get_context_data(*args, **kwargs)
+        context["cat_menu"] = cat_menu
+        return context
