@@ -1,33 +1,75 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    {{ profile.user.username }}'s Profile
+    Edit Profile
 {% endblock %}
 
 {% block content %}
 <div class="container mt-5">
-    <h1 class="text-center">{{ profile.user.username }}'s Profile</h1>
-    <div class="card mt-4">
-        <div class="card-body">
-            <h5 class="card-title">Bio:</h5>
-            <p class="card-text">{{ profile.bio|default:"No bio available." }}</p>
-
-            <h5 class="card-title">Credentials:</h5>
-            <p class="card-text">{{ profile.credentials|default:"No credentials provided." }}</p>
-
-            <h5 class="card-title">Services:</h5>
-            <p class="card-text">{{ profile.services|default:"No services listed." }}</p>
-
-            {% if profile.photo %}
-            <h5 class="card-title">Profile Picture:</h5>
-            <img src="{{ profile.photo.url }}" alt="Profile Picture" class="img-fluid rounded">
-            {% else %}
-            <p>No profile picture available.</p>
-            {% endif %}
-
-            <h5 class="card-title">Availability:</h5>
-            <p class="card-text">{{ profile.availability|default:"No availability set." }}</p>
+    <h1 class="text-center">Edit Your Profile</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <!-- Bio -->
+        <div class="mb-3">
+            <label for="bio" class="form-label">Bio</label>
+            {{ form.bio }}
         </div>
-    </div>
+        
+        <!-- Credentials -->
+        <div class="mb-3">
+            <label for="credentials" class="form-label">Credentials</label>
+            {{ form.credentials }}
+        </div>
+        
+        <!-- Services -->
+        <div class="mb-3">
+            <label for="services" class="form-label">Services Offered</label>
+            {{ form.services }}
+        </div>
+        
+        <!-- Profile Picture -->
+        <div class="mb-3">
+            <label for="photo" class="form-label">Profile Picture</label>
+            {{ form.photo }}
+            <img id="profile-preview" src="#" alt="Profile Picture Preview" class="img-thumbnail mt-3" style="display: none; width: 150px; height: 150px;">
+        </div>
+        
+        <!-- Availability -->
+        <div class="mb-3">
+            <label for="availability" class="form-label">Availability</label>
+            <input id="availability" name="availability" class="form-control">
+        </div>
+        
+        <!-- Buttons -->
+        <button type="submit" class="btn btn-success">Save Changes</button>
+        <a href="{% url 'therapist_profile' %}" class="btn btn-secondary">Cancel</a>
+    </form>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    const photoInput = document.getElementById('id_photo');
+    const profilePreview = document.getElementById('profile-preview');
+
+    photoInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                profilePreview.src = e.target.result;
+                profilePreview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    flatpickr("#availability", {
+        enableTime: true,
+        mode: "multiple",
+        dateFormat: "Y-m-d H:i",
+        altInput: true,
+        altFormat: "F j, Y h:i K",
+    });
+</script>
 {% endblock %}
