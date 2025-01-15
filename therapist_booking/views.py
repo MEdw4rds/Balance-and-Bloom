@@ -9,44 +9,30 @@ from .models import BookingOneOnOne
 from .forms import BookingForm, EditBookingForm
 
 
-def profile(request):
-    """
-    Display a list of Active and cancelled bookings by the current user.
-    :model:`booking.Booking`
-    **Context**
+def booking_list(request):
+    active_bookings = BookingOneOnOne.objects.filter(user=request.user)
+    return render(request, 'therapist_booking/booking_list.html',
+                  {'active_bookings': active_bookings})
 
-    ``booking_id``
-        The Id of a :model:`booking.Booking`.
-    ``booking``
-        The instance of the Booking retrieved by the booking_id
-        :model:`booking.Booking`
-    ``active_bookings``
-        An instance to check if the current Booking is active
-        :form:`booking.Booking`.
-    ``cancelled_bookings``
-        An instance to check if the current Booking is cancelled.
-        :form:`therapist_booking.booking`.
 
-    **Template:**
-
-    :template:`therapist_booking/profile.html`
-    """
+def delete_booking(request):
     if request.method == 'POST':
-        booking_id = request.POST.get('booking_id')
+        booking_id = request.POST.get('bookingoneonone_id')
         if booking_id:
             booking = get_object_or_404(
                 BookingOneOnOne,
                 id=booking_id,
                 user=request.user
-                )
-            if booking.is_canceled:
+            )
+            if booking:
                 booking.delete()
-                return redirect('profile')
+                return redirect('booking_list')
+    return redirect('booking_list')
 
     active_bookings = BookingOneOnOne.objects.filter(
-        user=request.user, is_canceled=False
-        )
-    return render(request, 'therapist_booking/profile.html', {
+        user=request.user
+    )
+    return render(request, 'therapist_booking/booking_list.html', {
         'active_bookings': active_bookings,
     })
 
@@ -82,7 +68,7 @@ def book_time_slot(request):
             booking.user = request.user
             try:
                 booking.save()
-                return redirect('therapist_booking_success')
+                return redirect('booking_success')
             except ValidationError as e:
                 messages.add_message(request, messages.ERROR, e.message)
         else:
@@ -95,7 +81,7 @@ def book_time_slot(request):
     if selected_date:
         selected_date = datetime.strptime(selected_date, '%Y-%m-%d').date()
         queryset = BookingOneOnOne.objects.filter(
-            date=selected_date, is_canceled=False
+            date=selected_date
             )
         taken_time_slots = queryset.values_list('time_slot', flat=True)
     else:
@@ -125,20 +111,11 @@ def edit_booking(request, booking_id):
     booking = get_object_or_404(BookingOneOnOne,
                                 id=booking_id, user=request.user)
     if request.method == 'POST':
-        if 'cancel' in request.POST:
-            booking.is_canceled = True
-            try:
-                booking.save()
-                messages.add_message(request, messages.SUCCESS,
-                                     'Booking cancelled successfully.')
-                return redirect('profile')
-            except ValidationError as e:
-                messages.add_message(request, messages.ERROR, e.message)
-        elif 'delete' in request.POST:
+        if 'delete' in request.POST:
             booking.delete()
             messages.add_message(request, messages.SUCCESS,
                                  'Booking deleted successfully.')
-            return redirect('profile')
+            return redirect('booking_list')
         else:
             form = EditBookingForm(request.POST, instance=booking)
             if form.is_valid():
@@ -146,7 +123,7 @@ def edit_booking(request, booking_id):
                     form.save()
                     messages.add_message(request, messages.SUCCESS,
                                          'Booking updated successfully.')
-                    return redirect('profile')
+                    return redirect('booking_list')
                 except ValidationError as e:
                     messages.add_message(request, messages.ERROR, e.message)
             else:

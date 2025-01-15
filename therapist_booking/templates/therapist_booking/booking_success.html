@@ -1,0 +1,23 @@
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static '/css/booking-style.css' %}">
+
+<section class="success-container">
+    <div class="success-icon">
+        <i class="fa-regular fa-circle-check checkmark"></i>
+    </div>
+    <h1 class="success-heading">Success!</h1>
+    <p>Your booking was successful!</p>
+    <p>We'll be seeing you soon!</p>
+    <div class="details">
+        <!-- Optional additional details here -->
+    </div>
+    <div class="action-buttons">
+        <a href="{% url 'home' %}" class="btn">Go to Homepage</a>
+        <a href="{% url 'booking_list' %}" class="btn">View Your Bookings</a>
+    </div>
+</section>
+
+<script src="https://kit.fontawesome.com/fa0c19c3b9.js" crossorigin="anonymous"></script>
+{% endblock %}
