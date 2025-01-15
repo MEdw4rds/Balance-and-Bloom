@@ -1,0 +1,25 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h1 {
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: bold;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #555;
+}
+
+.img-thumbnail {
+    margin-top: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    margin-top: 20px;
+}
