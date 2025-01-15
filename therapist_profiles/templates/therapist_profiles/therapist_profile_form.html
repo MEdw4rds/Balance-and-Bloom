@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% load static %}
+
 {% block title %}
-Edit Profile
+    Edit Profile
 {% endblock %}
 
 {% block content %}
@@ -9,7 +9,7 @@ Edit Profile
     <h1 class="text-center mb-4">Edit Your Profile</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-
+        
         <!-- Profile Fields -->
         <h3>Profile Information</h3>
         <div class="mb-3">
@@ -30,21 +30,13 @@ Edit Profile
         <div class="mb-3">
             <label for="photo" class="form-label">Profile Picture</label>
             {{ form.photo }}
-            {% if form.instance.photo %}
-            <img id="profile-preview" src="{{ form.instance.photo.url }}" alt="Profile Picture Preview"
-                class="img-thumbnail mt-3" style="display: block; width: 150px; height: 150px;">
-            {% else %}
-            <img id="profile-preview" src="#" alt="Profile Picture Preview" class="img-thumbnail mt-3"
-                style="display: none; width: 150px; height: 150px;">
-            {% endif %}
+            <img id="profile-preview" src="#" alt="Profile Picture Preview" class="img-thumbnail mt-3" style="display: none; width: 150px; height: 150px;">
         </div>
 
-
-        <!-- Availability -->
+        <!-- Availability Formset -->
         <h3>Availability</h3>
-        <div id="availability-container">
-            {{ formset.management_form }}
-            {% for availability_form in formset %}
+        {{ formset.management_form }}
+        {% for availability_form in formset %}
             <div class="row mb-3">
                 <div class="col-md-4">
                     <label>Day</label>
@@ -63,11 +55,7 @@ Edit Profile
                     {{ availability_form.DELETE }}
                 </div>
             </div>
-            {% endfor %}
-        </div>
-        <button id="add-availability" class="btn btn-primary mt-3">Add Availability</button>
-
-
+        {% endfor %}
 
         <!-- Submit Button -->
         <div class="d-flex justify-content-between">
@@ -82,11 +70,11 @@ Edit Profile
     const photoInput = document.getElementById('id_photo');
     const profilePreview = document.getElementById('profile-preview');
 
-    photoInput.addEventListener('change', function () {
+    photoInput.addEventListener('change', function() {
         const file = this.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 profilePreview.src = e.target.result;
                 profilePreview.style.display = 'block';
             };
@@ -94,19 +82,4 @@ Edit Profile
         }
     });
 </script>
-
-<!-- Flatpickr for Time Selection -->
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        flatpickr("input[type='time']", {
-            enableTime: true,
-            noCalendar: true,
-            dateFormat: "H:i"
-        });
-    });
-</script>
-
-<script src="{% static '/js/script.js' %}"></script>
-
 {% endblock %}
