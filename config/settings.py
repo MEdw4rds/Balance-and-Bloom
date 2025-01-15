@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'homepage',
     'therapist_profiles',
     'food',
+    'contact',
 ]
 
 SITE_ID = 1
