@@ -8,20 +8,20 @@ Therapist Profiles
 {% block content %}
 <div class="container mt-5">
     <h1 class="text-center mb-4">Therapist Profiles</h1>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card-deck">
-                {% for profile in profiles %}
-                <div class="card" style="max-width: 250px;">
-                    <!-- Profile Picture -->
+    <div class="row d-flex flex-wrap">
+        {% for profile in profiles %}
+        <div class="col-md-4 mb-4 d-flex align-items-stretch">
+            <div class="card shadow-sm h-100">
+                <!-- Profile Picture -->
                 {% if profile.photo %}
-                <img src="{{ profile.photo.url }}" class="card-img-top img-fluid rounded" alt="Profile Picture"
+                <img src="{{ profile.photo.url }}" class="card-img-top img-fluid" alt="Profile Picture"
                     style="height: 250px; object-fit: cover;">
                 {% else %}
-                <img src="{% static 'default_profile_picture.jpg' %}" class="card-img-top img-fluid rounded"
+                <img src="{% static 'default_profile_picture.jpg' %}" class="card-img-top img-fluid"
                     alt="Default Profile Picture" style="height: 250px; object-fit: cover;">
                 {% endif %}
-                <div class="card-body">
+
+                <div class="card-body d-flex flex-column">
                     <!-- Therapist Name -->
                     <h5 class="card-title text-center text-primary">{{ profile.user.first_name }}
                         {{ profile.user.last_name }}</h5>
@@ -29,7 +29,9 @@ Therapist Profiles
 
                     <!-- Bio -->
                     <p><strong>Bio:</strong></p>
-                    <p>{{ profile.bio|linebreaks }}</p>
+                    <div class="bio-content">
+                        <p>{{ profile.bio|default:"No bio available." }}</p>
+                    </div>
 
                     <!-- Credentials -->
                     <p><strong>Credentials:</strong></p>
@@ -40,7 +42,8 @@ Therapist Profiles
                     </ul>
 
                     <!-- Services Offered -->
-                    <p><strong>Services Offered:</strong>
+                    <p><strong>Services Offered:</strong></p>
+                    <p>
                         {% if profile.services.all %}
                         {% for service in profile.services.all %}
                         <span class="badge bg-secondary">{{ service.name }}</span>
@@ -50,16 +53,17 @@ Therapist Profiles
                         {% endif %}
                     </p>
                 </div>
-            </div>
 
-                <!-- Show Edit Profile Button for the Logged-in Therapist -->
-                {% if request.user.is_authenticated and request.user == profile.user %}
-                <a href="{% url 'therapist_profile' %}?edit=true" class="btn btn-primary mt-3">Edit Profile</a>
+                <!-- Edit Profile Button -->
+                {% if logged_in_user == profile.user %}
+                <div class="card-footer text-center mt-auto">
+                    <a href="{% url 'therapist_profile' %}?edit=true" class="btn btn-primary btn-sm">Edit Profile</a>
+                </div>
                 {% endif %}
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
     </div>
 </div>
-</div>
+
 {% endblock %}

@@ -19,10 +19,10 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <!-- Google translate added to assist with navigation -->
-            <div class="google-translate-container">
+            <!-- Google Translate -->
+            <div class="google-translate-container me-3">
                 <div id="google_translate_element"></div>
                 <script type="text/javascript">
                     function googleTranslateElementInit() {
@@ -35,47 +35,69 @@
                     src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
             </div>
 
+            <!-- Brand Logo -->
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="{% static 'path/to/logo.png' %}" alt="Logo" width="50" height="50" class="me-2">
+                <span>My Website</span>
+            </a>
 
-
-            <a class="navbar-brand" href=""> <img src="" alt="Logo" width="70" height="70"> </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Navbar Content -->
+            <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="">Home</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">About</a>
+                        <a class="nav-link" href="/about/">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Contact</a>
+                        <a class="nav-link" href="/contact/">Contact</a>
                     </li>
-                    <!-- Dropdown Section-->
+                    <!-- Dropdown Section -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             More
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href=""> FAQ</a></li>
-                            <li><a class="dropdown-item" href=""> Blog </a></li>
-                            <li><a class="dropdown-item" href=""> Booking </a></li>
+                            <li><a class="dropdown-item" href="#">Example 1</a></li>
+                            <li><a class="dropdown-item" href="#">Example 2</a></li>
+                            <li><a class="dropdown-item" href="#">Example 3</a></li>
                         </ul>
+                    </li>
                 </ul>
 
-                <!-- Search Form -->
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                <!-- Right Aligned Links -->
+                <ul class="navbar-nav ms-auto">
+                    <!-- Authenticated User Links -->
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'therapist_profile' %}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
+                    </li>
+                    {% else %}
+                    <!-- Guest User Links -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-white ms-2" href="{% url 'account_signup' %}">Sign
+                            Up</a>
+                    </li>
+                    {% endif %}
+                </ul>
             </div>
         </div>
     </nav>
+
     <main>
         {% block content %}
         {% endblock %}
