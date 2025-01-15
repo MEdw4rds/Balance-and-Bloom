@@ -50,10 +50,11 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
     'cloudinary',
     'homepage',
-    'therapist_profiles'
-    'food'
+    'therapist_profiles',
+    'food',
 ]
 
 SITE_ID = 1
