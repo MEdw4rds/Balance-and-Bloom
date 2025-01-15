@@ -1,75 +1,42 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
-    Edit Profile
+Therapist Profiles
 {% endblock %}
 
 {% block content %}
 <div class="container mt-5">
-    <h1 class="text-center">Edit Your Profile</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        
-        <!-- Bio -->
-        <div class="mb-3">
-            <label for="bio" class="form-label">Bio</label>
-            {{ form.bio }}
+    <h1 class="text-center mb-4">Therapist Profiles</h1>
+    <div class="row">
+        {% for profile in profiles %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <!-- Therapist Profile Picture -->
+                {% if profile.photo %}
+                <img src="{{ profile.photo.url }}" class="card-img-top"
+                    alt="{{ profile.user.first_name }}'s Profile Picture" style="height: 200px; object-fit: cover;">
+                {% else %}
+                <img src="{% static '/default_profile_picture.jpg' %}" class="card-img-top"
+                    alt="Default Profile Picture" style="height: 200px; object-fit: cover;">
+                {% endif %}
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ profile.user.first_name }} {{ profile.user.last_name }}</h5>
+                    <p class="card-text"><strong>Bio:</strong> {{ profile.bio|default:"No bio available." }}</p>
+                    <p class="card-text"><strong>Credentials:</strong>
+                        {{ profile.credentials|default:"No credentials available." }}</p>
+                    <p class="card-text"><strong>Services Offered:</strong>
+                        {{ profile.services|default:"No services listed." }}</p>
+
+                    <!-- Show Edit Profile Button for the Logged-in Therapist -->
+                    {% if request.user.is_authenticated and request.user == profile.user %}
+                    <a href="{% url 'therapist_profile' %}?edit=true" class="btn btn-primary mt-3">Edit Profile</a>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-        
-        <!-- Credentials -->
-        <div class="mb-3">
-            <label for="credentials" class="form-label">Credentials</label>
-            {{ form.credentials }}
-        </div>
-        
-        <!-- Services -->
-        <div class="mb-3">
-            <label for="services" class="form-label">Services Offered</label>
-            {{ form.services }}
-        </div>
-        
-        <!-- Profile Picture -->
-        <div class="mb-3">
-            <label for="photo" class="form-label">Profile Picture</label>
-            {{ form.photo }}
-            <img id="profile-preview" src="#" alt="Profile Picture Preview" class="img-thumbnail mt-3" style="display: none; width: 150px; height: 150px;">
-        </div>
-        
-        <!-- Availability -->
-        <div class="mb-3">
-            <label for="availability" class="form-label">Availability</label>
-            <input id="availability" name="availability" class="form-control">
-        </div>
-        
-        <!-- Buttons -->
-        <button type="submit" class="btn btn-success">Save Changes</button>
-        <a href="{% url 'therapist_profile' %}" class="btn btn-secondary">Cancel</a>
-    </form>
+        {% endfor %}
+    </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script>
-    const photoInput = document.getElementById('id_photo');
-    const profilePreview = document.getElementById('profile-preview');
-
-    photoInput.addEventListener('change', function() {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                profilePreview.src = e.target.result;
-                profilePreview.style.display = 'block';
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-
-    flatpickr("#availability", {
-        enableTime: true,
-        mode: "multiple",
-        dateFormat: "Y-m-d H:i",
-        altInput: true,
-        altFormat: "F j, Y h:i K",
-    });
-</script>
 {% endblock %}
