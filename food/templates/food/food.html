@@ -1,0 +1,143 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+<div class="container">
+    <!-- Title and Subtitle -->
+    <div class="row mt-4">
+        <div class="col-md-12 text-center">
+            <h1 class="post-title">{{ post.title }}</h1>
+            <p class="post-subtitle"> {{ post.created_on }}</p>
+        </div>
+    </div>
+
+    <!-- Image -->
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            {% if "placeholder" in post.featured_image.url %}
+            <img src="{% static 'images/default.jpg' %}" class="img-fluid" alt="placeholder image">
+            {% else %}
+            <img src="{{ post.featured_image.url }}" class="img-fluid" alt="{{ post.title }}">
+            {% endif %}
+            <p class="image-caption">{{ post.image_caption }}</p>
+        </div>
+    </div>
+
+    <!-- Text Content -->
+    <div class="row mt-4">
+        <div class="col-md-8 offset-md-2">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <p class="card-text">
+                        {{ post.content | safe }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Like Button -->
+    {% if user.is_authenticated %}
+    <div class="row mt-4">
+        <div class="col-md-4 offset-md-2">
+            <form action="{% url 'like_post' slug=post.slug %}" method="POST">
+                {% csrf_token %}
+                {% if user in post.likes.all %}
+                    <button type="submit" class="btn btn-secondary btn-lg">Unlike</button>
+                {% else %}
+                    <button type="submit" class="btn btn-primary btn-lg">Like</button>
+                {% endif %}
+            {% endif %}
+            </form>
+            <p class="total-likes mt-3" style="font-weight: bold;">{{ post.total_likes }} likes</p>
+        </div>
+    </div>
+    <!-- Displaying count of reviews -->
+    <div class="row">
+        <div class="col-12">
+            <strong class="text-secondary">
+                <i class="far fa-comments"></i> {{ review_count }}
+            </strong>
+        </div>
+        <div class="col-12">
+            <hr>
+        </div>
+    </div>
+    <!-- Displaying Reviews -->
+    <div class="row">
+        <div class="col-md-8 card mb-4  mt-3 ">
+            <h3>Reviews:</h3>
+            <div class="card-body">
+                <!-- We want a for loop inside the empty control tags
+          to iterate through each review in reviews -->
+                {% for review in reviews %}
+                <div class="p-2 comments
+                    {% if not review.approved and review.author_id == user %}
+                    faded{% elif not review.approved %} d-none{% endif %}">
+                    <p class="font-weight-bold">
+                        {{ review.author_id }}
+                        <span class="font-weight-normal">
+                            {{ review.date_published }}
+                        </span> wrote:
+                    </p>
+                    <div id="review{{ review.review_id }}">
+                        {{ review.body | linebreaks }}
+                    </div>
+                    {% if not review.approved and review.author_id == user %}
+                    <p class="approval">
+                        This review is awaiting approval
+                    </p>
+                    {% endif %}
+                    {% if user.is_authenticated and review.author_id == user %}
+                    <button class="btn btn-delete" data-review_id="{{ review.review_id }}">Delete</button>
+                    <button class="btn btn-edit" data-review_id="{{ review.review_id }}">Edit</button>
+                    {% endif %}
+                </div>
+                <!-- Our for loop ends here -->
+                {% endfor %}
+            </div>
+        </div>
+        <!-- Creating New Reviews -->
+        <div class="col-md-4 card mb-4 mt-3">
+            <div class="card-body">
+                {% if user.is_authenticated %}
+                <h3>Leave a Review:</h3>
+                <p>Posting as: {{ user.username }}</p>
+                <form id="reviewForm" method="post" style="margin-top: 1.3em;">
+                    {{ review_form | crispy }}
+                    {% csrf_token %}
+                    <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
+                </form>
+                {% else %}
+                <p>Log in to leave a Review</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete confirmation modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete review?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your review?
+                This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a id="deleteConfirm" href="review_delete/" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block extras %}
+<script src="{% static 'js/comments.js' %}"></script>
+{% endblock %}
