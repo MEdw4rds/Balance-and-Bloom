@@ -46,8 +46,8 @@ class BookingOneOnOne(models.Model):
         # Check the number of bookings for this user in the current month
         current_month_bookings = BookingOneOnOne.objects.filter(
             user=self.user,
-            booking_date__year=date.today().year,
-            booking_date__month=date.today().month
+            date__year=date.today().year,
+            date__month=date.today().month
         ).count()
 
         # Define the booking limit

@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'homepage',
     'therapist_profiles',
+    'therapist_booking',
     'food',
     'contact',
 ]
