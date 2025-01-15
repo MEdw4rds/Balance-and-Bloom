@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block title %}
@@ -9,34 +9,57 @@ Therapist Profiles
 <div class="container mt-5">
     <h1 class="text-center mb-4">Therapist Profiles</h1>
     <div class="row">
-        {% for profile in profiles %}
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <!-- Therapist Profile Picture -->
+        <div class="col-md-4">
+            <div class="card-deck">
+                {% for profile in profiles %}
+                <div class="card" style="max-width: 250px;">
+                    <!-- Profile Picture -->
                 {% if profile.photo %}
-                <img src="{{ profile.photo.url }}" class="card-img-top"
-                    alt="{{ profile.user.first_name }}'s Profile Picture" style="height: 200px; object-fit: cover;">
+                <img src="{{ profile.photo.url }}" class="card-img-top img-fluid rounded" alt="Profile Picture"
+                    style="height: 250px; object-fit: cover;">
                 {% else %}
-                <img src="{% static '/default_profile_picture.jpg' %}" class="card-img-top"
-                    alt="Default Profile Picture" style="height: 200px; object-fit: cover;">
+                <img src="{% static 'default_profile_picture.jpg' %}" class="card-img-top img-fluid rounded"
+                    alt="Default Profile Picture" style="height: 250px; object-fit: cover;">
                 {% endif %}
-
                 <div class="card-body">
-                    <h5 class="card-title">{{ profile.user.first_name }} {{ profile.user.last_name }}</h5>
-                    <p class="card-text"><strong>Bio:</strong> {{ profile.bio|default:"No bio available." }}</p>
-                    <p class="card-text"><strong>Credentials:</strong>
-                        {{ profile.credentials|default:"No credentials available." }}</p>
-                    <p class="card-text"><strong>Services Offered:</strong>
-                        {{ profile.services|default:"No services listed." }}</p>
+                    <!-- Therapist Name -->
+                    <h5 class="card-title text-center text-primary">{{ profile.user.first_name }}
+                        {{ profile.user.last_name }}</h5>
+                    <hr>
 
-                    <!-- Show Edit Profile Button for the Logged-in Therapist -->
-                    {% if request.user.is_authenticated and request.user == profile.user %}
-                    <a href="{% url 'therapist_profile' %}?edit=true" class="btn btn-primary mt-3">Edit Profile</a>
-                    {% endif %}
+                    <!-- Bio -->
+                    <p><strong>Bio:</strong></p>
+                    <p>{{ profile.bio|linebreaks }}</p>
+
+                    <!-- Credentials -->
+                    <p><strong>Credentials:</strong></p>
+                    <ul>
+                        {% for line in profile.credentials.splitlines %}
+                        <li>{{ line }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <!-- Services Offered -->
+                    <p><strong>Services Offered:</strong>
+                        {% if profile.services.all %}
+                        {% for service in profile.services.all %}
+                        <span class="badge bg-secondary">{{ service.name }}</span>
+                        {% endfor %}
+                        {% else %}
+                        No services listed.
+                        {% endif %}
+                    </p>
                 </div>
             </div>
+
+                <!-- Show Edit Profile Button for the Logged-in Therapist -->
+                {% if request.user.is_authenticated and request.user == profile.user %}
+                <a href="{% url 'therapist_profile' %}?edit=true" class="btn btn-primary mt-3">Edit Profile</a>
+                {% endif %}
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
+</div>
 </div>
 {% endblock %}
