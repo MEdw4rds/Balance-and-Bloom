@@ -3,6 +3,7 @@ from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
+from django.views.generic import CreateView
 from .models import Post, Comment, Category
 from django.utils.decorators import method_decorator
 from functools import wraps
