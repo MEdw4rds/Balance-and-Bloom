@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-def home(request):
+def about(request):
     """
     Renders the homepage.
 
