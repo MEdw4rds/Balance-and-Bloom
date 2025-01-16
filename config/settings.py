@@ -70,6 +70,8 @@ INSTALLED_APPS = [
     'therapist_booking',
     'food',
     'contact',
+    'about',
+    
 ]
 
 SITE_ID = 1
