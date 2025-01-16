@@ -21,11 +21,15 @@
          left:10px;
          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
          transition: 0.3s;
-         width: 40%;
+         width: 50%;
          height:auto;
          border-radius: 5px;
          background-color: #d7d7d7;
          background-image: linear-gradient(147deg, #d7d7d7 0%, #353535 74%);
+         display: flex; 
+         justify-content: center; 
+         align-items: center; 
+         text-size-adjust: auto;
 
       }
 
@@ -47,7 +51,10 @@
         height: auto;
         width: auto;
       }
-   
+      input  {
+        background: lightgreen;
+     }
+
    </style>
 </style>
 </head>
@@ -65,9 +72,12 @@
             <div class="fieldWrapper">
                 {{ field.errors }}
                 {{ field.label_tag }} {{ field }}
+                <hr>
             </div>
             {% endfor %}
+            
             <input type="submit" value="Submit">
+            <hr>
             </form>
     
 </div>
