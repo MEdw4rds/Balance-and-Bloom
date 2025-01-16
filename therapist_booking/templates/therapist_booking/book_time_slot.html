@@ -3,6 +3,17 @@
 
 {% block content %}
 
+{% if messages %}
+<div id="message-container">
+    {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+        {{ message }}
+    </div> 
+{% endfor %}
+</div>
+{% endif %}
+
+
 <link rel="stylesheet" href="{% static '/css/booking-style.css' %}">
 
 <div class="container bookings-container">
@@ -22,4 +33,7 @@
         </div>
     </div>
 </div>
+
+<script src="{% static '/js/message-time.js' %}"></script>
+
 {% endblock %}
