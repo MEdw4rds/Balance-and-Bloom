@@ -54,7 +54,7 @@ class BookingOneOnOne(models.Model):
         booking_limit = 8  # You can change this to your desired limit
 
         if current_month_bookings >= booking_limit:
-            raise ValueError(
+            raise ValidationError(
                 f"You have exceeded the booking limit of {booking_limit} "
                 f"per month."
             )

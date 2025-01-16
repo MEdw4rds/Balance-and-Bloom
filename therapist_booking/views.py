@@ -10,7 +10,8 @@ from .forms import BookingForm, EditBookingForm
 
 
 def booking_list(request):
-    active_bookings = BookingOneOnOne.objects.filter(user=request.user)
+    booking = BookingOneOnOne.objects.filter(user=request.user)
+    active_bookings = booking.order_by('date', 'time_slot')
     return render(request, 'therapist_booking/booking_list.html',
                   {'active_bookings': active_bookings})
 
