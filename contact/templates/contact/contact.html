@@ -4,17 +4,74 @@
 {% block title %}Contact {% endblock %}
 
 {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-<form action="contact/" method="post">
-    {% csrf_token %}
-    {% for field in form %}
-        <div class="fieldWrapper">
-            {{ field.errors }}
-            {{ field.label_tag }} {{ field }}
-        </div>
-    {% endfor %}
-    <input type="submit" value="Submit">
-  </form>
- 
-{% endblock %}
- 
+<title>Title</title>
+<style>
+      .card {
+         display: inline-block;
+         left:10px;
+         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+         transition: 0.3s;
+         width: 40%;
+         height:auto;
+         border-radius: 5px;
+         background-color: #d7d7d7;
+         background-image: linear-gradient(147deg, #d7d7d7 0%, #353535 74%);
+
+      }
+
+      .card:hover {
+         box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      img {
+         border-radius: 5px 5px 0 0;
+      }
+
+      .container {
+        
+        left:50%;
+         padding: 10px 16px;
+      }
+      .aform {
+        background-color: transparent;
+        height: auto;
+        width: auto;
+      }
+   
+   </style>
+</style>
+</head>
+<body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div class="container">
+<div class="card">
+    
+            <h1 class="center">CONTACT US</h1>
+            <form action="/contact/" method="post" class="aform">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="fieldWrapper">
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}
+            </div>
+            {% endfor %}
+            <input type="submit" value="Submit">
+            </form>
+    
+</div>
+</div>
+</body>
+</html>
+ {% endblock %}

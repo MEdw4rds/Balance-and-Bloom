@@ -38,6 +38,15 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com"
 ]
 
+# Added to allow SMTP
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mail.yahoo.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'awellness9998@yahoo.com'
+EMAIL_HOST_PASSWORD = '9KT9F_AywNmB_Mr'
+ADMIN_EMAIL = 'awellness9998@yahoo.com'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -61,6 +70,8 @@ INSTALLED_APPS = [
     'therapist_booking',
     'food',
     'contact',
+    'about',
+    
 ]
 
 SITE_ID = 1
