@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container bookings-container">
+    <div class="row">
+        <div class="col-12">
+            <div class="booking-heading text-center">
+                <h1>Edit Booking</h1>
+                <hr class="hr-dark">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 center edit-booking-form">
+            <form method="post" class="forms">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" name="save" class="btn btn--orange">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

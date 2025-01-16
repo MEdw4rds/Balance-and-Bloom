@@ -2,6 +2,20 @@
 
 from django.db import migrations, models
 
+def populate_services(apps, schema_editor):
+    Service = apps.get_model('therapist_profiles', 'Service')
+    services = [
+        'Stress Management',
+        'Time Management',
+        'Cultural Adjustment Counseling',
+        'Exam Anxiety Counseling',
+        'Grief Counseling',
+        'Relationship Counseling',
+        'Career Counseling',
+    ]
+    for service_name in services:
+        Service.objects.create(name=service_name)
+
 
 class Migration(migrations.Migration):
 
@@ -36,4 +50,6 @@ class Migration(migrations.Migration):
             name='services',
             field=models.ManyToManyField(blank=True, to='therapist_profiles.service'),
         ),
+        migrations.RunPython(populate_services),
     ]
+
