@@ -85,6 +85,9 @@
                     <!-- Authenticated User Links -->
                     {% if user.is_authenticated %}
                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'food' %}">Food</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'therapist_profile' %}">Profile</a>
                     </li>
                     <li class="nav-item">

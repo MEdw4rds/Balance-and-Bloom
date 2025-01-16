@@ -1,0 +1,11 @@
+.btn-signup,
+.btn-edit {
+    background-color: #9b42e4;
+    color: #fff;
+}
+
+.btn-signup:hover,
+.btn-signup:active {
+    background-color: #f5d419;
+    color: #23BBBB;
+}
