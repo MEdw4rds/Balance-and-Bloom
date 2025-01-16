@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'django_summernote',
+    'crispy_forms',
+    'crispy_bootstrap5',
     'cloudinary',
     'homepage',
     'therapist_profiles',
