@@ -37,6 +37,15 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com"
 ]
 
+# Added to allow SMTP
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'at.venugopal@gmail.com'
+EMAIL_HOST_PASSWORD = 'Zxcvbn63%%'
+ADMIN_EMAIL = 'at.venugopal@gmail.com'
+
 # Application definition
 
 INSTALLED_APPS = [
