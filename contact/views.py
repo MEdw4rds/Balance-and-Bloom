@@ -23,11 +23,11 @@ def contact(request):
             sadmin_email = "awellness9998@yahoo.com"
             # Send an email
             #send_mail(
-               # f'From {name}, Subject: {subject}',
-              #  f'Message: {message}\nContact Phone: {phone}',
-               # email,  # From email
-              #  [admin_email],  # To email
-             #   fail_silently=False,
+            #   f'From {sname}, Subject: {ssubject}',
+            #   f'Message: {smessage}\nContact Phone: {sphone}',
+            #   semail,  # From email
+            #   [sadmin_email],  # To email
+            #   fail_silently=False,
             #)
             save_form=Contact(name=sname,email=semail,phone=sphone, subject=ssubject, message=smessage)
             save_form.save()
