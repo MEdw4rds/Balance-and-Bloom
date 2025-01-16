@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
 
@@ -44,16 +44,16 @@
             <form action="{% url 'like_post' slug=post.slug %}" method="POST">
                 {% csrf_token %}
                 {% if user in post.likes.all %}
-                    <button type="submit" class="btn btn-secondary btn-lg">Unlike</button>
+                <button type="submit" class="btn btn-secondary btn-lg">👎 Unlike</button>
                 {% else %}
-                    <button type="submit" class="btn btn-primary btn-lg">Like</button>
+                <button type="submit" class="btn btn-primary btn-lg">👍 Like</button>
                 {% endif %}
-            {% endif %}
+                {% endif %}
             </form>
             <p class="total-likes mt-3" style="font-weight: bold;">{{ post.total_likes }} likes</p>
         </div>
     </div>
-     
+
 
     <!-- Comment Section -->
     <div class="row">
@@ -66,10 +66,12 @@
             <hr>
         </div>
     </div>
+    <!-- Displaying Comments -->
     <div class="row">
         <div class="col-md-8 card mb-4  mt-3 ">
             <h3>Comments:</h3>
             <div class="card-body">
+                <!-- We want a for loop inside the empty control tags to iterate through each comment in comments -->
                 {% for comment in comments %}
                 <div
                     class="p-2 comments{% if not comment.approved and comment.author == user %} faded{% elif not comment.approved %} d-none{% endif %}">
@@ -86,13 +88,15 @@
                     <p class="approval">This comment is awaiting approval</p>
                     {% endif %}
                     {% if user.is_authenticated and comment.author == user %}
-                    <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
-                    <button class="btn btn-edit" comment_id="{{ comment.id }}">Edit</button>
+                    <button class="btn btn-delete" data-comment_id="{{ comment.id }}">Delete</button>
+                    <button class="btn btn-edit" data-comment_id="{{ comment.id }}">Edit</button>
                     {% endif %}
                 </div>
+                <!-- Our for loop ends here -->
                 {% endfor %}
             </div>
         </div>
+         <!-- Creating New Comments -->
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
                 {% if user.is_authenticated %}
@@ -112,6 +116,7 @@
         </div>
     </div>
 </div>
+
 <!-- Delete confirmation modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -132,7 +137,6 @@
 </div>
 
 {% endblock content %}
-
-{% block extras %}
-<script src="{% static 'js/comments.js' %}"></script>
+{% block scripts %}
+<script src="{% static '/js/comments.js' %}"></script>
 {% endblock %}
