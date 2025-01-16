@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'cloudinary',
     'homepage',
-    'therapist_profiles',
+    'therapist_profiles', 
     'food',
     'contact',
 ]
