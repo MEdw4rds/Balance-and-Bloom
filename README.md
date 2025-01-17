@@ -1,5 +1,5 @@
 ## Project 
-
+Am I responsive
 
 # Table of Contents
 1. <a href="#Lets Renovate - Home Decorating Blog">Introduction</a>
@@ -32,15 +32,32 @@
 
 ## Overview
 
+The website’s main goal is to improve the mental, emotional, and physical health of students by providing easy access to essential services like therapy appointments and healthy food options, all in one platform. It serves as a one-stop-shop to support students' well-being, helping them manage stress, maintain a healthy diet, and get professional mental health support.
+
 # UX - User Experience
 
 ### Key project goals
 
+1. Therapists Booking System:
+Objective: To provide students with easy access to mental health professionals and therapists for online or in-person appointments.
+
+2. Food Options & Meal Planning:
+Objective: To provide healthy, convenient food choices for students, making it easier to maintain a balanced diet, especially during stressful times like exams.
+
+3. Holistic Wellness Resources:
+Objective: To foster a well-rounded approach to student wellness, including resources for relaxation, physical activity, and stress management.
+
 ### Target Audience
+
+The Student Wellness Website that offers therapists' booking services and food options primarily targets college and university students, but it also extends to other related groups such as graduate students, international students, student-athletes, and students dealing with specific challenges like mental health concerns or time management difficulties. The audience is united by a shared need for support in balancing their academic, emotional, and physical well-being.
 
 ### Agile Methodologies
 
+This was a group project as a part of Hackathon two, so we used an agile approach to project management. The Balance and Bloom development process was broken into sprints, and tasks were added to the GitHub, tasks were assigned and project board was created to be tracked and managed through issues.
+
 ### MoSCoW Prioritization
+
+![Logo](food/static/images/board.png)
 
 ### Sprints
 
