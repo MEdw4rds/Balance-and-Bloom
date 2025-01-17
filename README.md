@@ -76,9 +76,24 @@
 
 - #### Booking Page:
 
+- Mobile View
+
+![Logo](therapist_booking/static/images/wireframeloginmobile.png)
+
+- Desktop View
+
+![Logo](therapist_booking/static/images/wireframe_booking.png)
+
+
+![Logo](therapist_booking/static/images/wireframeuserbookings.png)
+
 - #### Profile Page:
 
 ### Database Schema - Entity Relationship Diagram
+
+The ERD shown below illustrates the relationships between the users, therapists appointments, acontact page,food posts comments and ratings, and more. This is essential to demonstrate the relationships between the different models in the PostgreSQL database.
+
+![Logo](food/static/images/erd.png)
 
 # Features
 
@@ -87,7 +102,11 @@ A responsive navigation bar is in place. Concentrating on 'mobile first' design,
 
 - ### Mobile Navb-bar with toggler
 
+![Logo](food/static/images/navbarmob.png)
+
 - ### Desktop Navbar
+
+![Logo](food/static/images/navbar.png)
 
 - ### About
 
