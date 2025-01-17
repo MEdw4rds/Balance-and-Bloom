@@ -3,14 +3,39 @@
 {% load static %}
 
 {% block content %}
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <h1>About</h1>
-        </div>
-    </div>
-</div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About</title>
+<style>
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  Pimg {
+    height: 300px;
+    width: 300px;;
+    }
+</style>
+</head>
+  
+<body>
+  <div class="container-fluid">
+         
+        
+          <img src="{% static '/images/Wellness-rocks2.jpg' %}" class="Pimg" alt="...">
+          
+        
+  </div>
+
+
+</body>
+
+</html>
 
 
 {% endblock %}

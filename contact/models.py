@@ -8,6 +8,9 @@ class Contact(models.Model):
     subject = models.CharField(max_length=100)
     message = models.CharField(max_length=100)
     added_on = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        ordering = ["-added_on"]
 
     def __str__(self):
-        return f"{self.name} | {self.email}"
+        return f"{self.name} | {self.email} | {self.added_on}"
