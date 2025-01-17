@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
+
 {% block content %}
 
 
@@ -36,10 +37,10 @@
                                     </a>
                                     <!-- Test code for edit and delete new post -->
                                     {% if user.is_superuser %}
-                                        <a href="{% url 'update_post' slug=post.slug %}">Edit post</a>
-                                        <a href="{% url 'delete_post' slug=post.slug %}">Delete post</a>
+                                        <a href="#">Edit post</a>
+                                        <a href="#">Delete post</a>
                                     {% endif %}
-                                    <hr />
+                                    <hr>
                                     <p class="card-text text-muted h6">{{ post.created_on }}</p>
                                 </div>
                             </div>
