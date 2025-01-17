@@ -3,14 +3,68 @@
 {% load static %}
 
 {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <h1>Home!</h1>
+</head>
+<style>
+              
+        .video-background {
+            position: relative;
+            top: auto;
+            left: auto;
+            width: 75%;
+            height: 75%;
+            object-fit: cover;
+            z-index: -1;
+        }
+</style>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div>
+                <h1>Home!</h1>
+                <div style="text-align:center"> 
+                    
+                    <video class="video-background" id="video1" autoplay muted loop>
+                      <source src="{% static '/images/counselling.mp4' %}" type="video/mp4">
+                      Your browser does not support HTML video.
+                    </video>
+                  </div> 
+                  
+                  <script> 
+                  var myVideo = document.getElementById("video1"); 
+                  
+                  function playPause() { 
+                    if (myVideo.paused) 
+                      myVideo.play(); 
+                    else 
+                      myVideo.pause(); 
+                  } 
+                  
+                  function makeBig() { 
+                      myVideo.width = 560; 
+                  } 
+                  
+                  function makeSmall() { 
+                      myVideo.width = 320; 
+                  } 
+                  
+                  function makeNormal() { 
+                      myVideo.width = 420; 
+                  } 
+                  </script> 
+                </div>
+            </div>
         </div>
     </div>
-</div>
-
+    
+</body>
+</html>
 
 {% endblock %}

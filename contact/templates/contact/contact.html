@@ -34,7 +34,7 @@
       }
 
       .card:hover {
-         box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+         box-shadow: 0 18px 26px 0 rgba(0, 0, 0, 0.8);
       }
 
       img {
@@ -51,10 +51,12 @@
         height: auto;
         width: auto;
       }
-      input  {
+      input[type="text"]  {
         background: lightgreen;
+        text-shadow: #353535;
      }
       input textarea {
+     
         background-color: aquamarine;
       }
      body {
@@ -84,7 +86,7 @@
             </div>
             {% endfor %}
             
-            <input type="submit" value="Submit">
+            <input type="submit" value="Enter" class="btn btn-success">
             <hr>
             </form>
     
