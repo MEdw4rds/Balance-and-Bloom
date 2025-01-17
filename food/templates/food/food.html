@@ -63,7 +63,7 @@
             </strong>
         </div>
         <div class="col-12">
-            <hr>
+            <hr> 
         </div>
     </div>
     <!-- Displaying Comments -->
@@ -88,7 +88,7 @@
                     <p class="approval">This comment is awaiting approval</p>
                     {% endif %}
                     {% if user.is_authenticated and comment.author == user %}
-                    <button class="btn btn-delete" data-comment_id="{{ comment.id }}">Delete</button>
+                    <button class="btn btn-signup " data-comment_id="{{ comment.id }}">Delete</button>
                     <button class="btn btn-edit" data-comment_id="{{ comment.id }}">Edit</button>
                     {% endif %}
                 </div>
@@ -129,8 +129,8 @@
                 Are you sure you want to delete your comment? This action cannot be undone.
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
+                <button type="button" class="btn btn-secondary btn-signup" data-bs-dismiss="modal">Close</button>
+                <a id="deleteConfirm" href="#" class="btn btn-danger btn-signup">Delete</a>
             </div>
         </div>
     </div>

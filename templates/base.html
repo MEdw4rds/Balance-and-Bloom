@@ -78,7 +78,7 @@
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" href="{% url 'food' %}" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li>
@@ -86,7 +86,7 @@
                                 <ul class="dropdown-menu dropdown-submenu">
                                     <li>
                                         <a class="dropdown-item" href="#">Submenu item 1</a>
-                                    </li>
+                                         </li>
                                     <li>
                                         <a class="dropdown-item" href="#">Submenu item 2</a>
                                     </li>
@@ -105,6 +105,9 @@
                 <ul class="navbar-nav ms-auto">
                     <!-- Authenticated User Links -->
                     {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'food' %}">Food</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'therapist_profile' %}">Profile</a>
                     </li>
