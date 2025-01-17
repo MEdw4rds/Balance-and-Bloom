@@ -89,6 +89,7 @@
 
 - #### Profile Page:
 
+
 ### Database Schema - Entity Relationship Diagram
 
 The ERD shown below illustrates the relationships between the users, therapists appointments, acontact page,food posts comments and ratings, and more. This is essential to demonstrate the relationships between the different models in the PostgreSQL database.
@@ -112,31 +113,66 @@ A responsive navigation bar is in place. Concentrating on 'mobile first' design,
 
 - ### Contact
 
+A contact form is created for students to contact team.
+
+![Logo](food/static/images/contact.png)
+
 - ### Bookings
 
+![Logo](food/static/images/bookings.png)
+
 - ### Profiles
+
+![Logo](food/static/images/therapist.png)
 
 - ### Food Categories
 
 - Recipies page
 
-- CRUD Functionality of Comment and Rating Model
+![Logo](food/static/images/category.png)
+
+- Food posts
+
+![Logo](food/static/images/foodpost.png)
+
+- ### CRUD Functionality of Comment and Rating Model
 
 1. Create 
 Users are automatically assigned a profile upon registration. They can create bookings and post comments.
 
+![Logo](food/static/images/timebook.png)
+
+![Logo](food/static/images/ratings.png)
+
 2. Read
-Users can view recipies and associated information, including Booking comments.
+Users can view bookings, recipies and associated information, including ratings and comments.
+
+![Logo](food/static/images/bookings.png)
 
 3. Update
 Users have the ability to update their ratings and comments.
 
+![Logo](food/static/images/update.png)
+
 4. Delete
-Users can delete comments at any time.
+Users can delete comments/bookings at any time.
+
+![Logo](food/static/images/bookings.png)
+
 
 - ### Signup/signin Form
 
+![Logo](food/static/images/sign.png)
+
 - ### Django Alert Messages
+Every time there is a change in data the user is alerted. For example when a comment is posted, when a comment is edited, when a comment is deleted, when a booking is created, when a booking is edited or when a booking is deleted.
+
+![Logo](food/static/images/jangoalert.png)
+
+![Logo](food/static/images/commentupdate.png)
+
+![Logo](food/static/images/deletealert.png)
+
 
 - ### Future Features
 
