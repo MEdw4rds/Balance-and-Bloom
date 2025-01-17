@@ -92,7 +92,7 @@ def post_detail(request, slug):
 def CategoryListView(request):
     cat_menu_list = Category.objects.all()
     return render(
-        request, 'category_list.html', {'cat_menu_list': cat_menu_list})
+        request, 'food/category_list.html', {'cat_menu_list': cat_menu_list})
 
 
 def CategoryView(request, cats):
@@ -105,7 +105,7 @@ def CategoryView(request, cats):
 
     cat_menu = Category.objects.all()
 
-    return render(request, 'categories.html', {
+    return render(request, 'food/categories.html', {
         'cats': cats.title(
         ), 'category_posts': category_posts, 'cat_menu': cat_menu})
 
@@ -156,7 +156,7 @@ def comment_delete(request, slug, comment_id):
 # for adding categories
 class AddCategoryView(CreateView):
     model = Category
-    template_name = 'add_category.html'
+    template_name = 'food/add_category.html'
     fields = '__all__'
 
     def get_context_data(self, *args, **kwargs):

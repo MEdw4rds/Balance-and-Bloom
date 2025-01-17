@@ -1,5 +1,5 @@
 ## Project 
-
+Am I responsive
 
 # Table of Contents
 1. <a href="#Lets Renovate - Home Decorating Blog">Introduction</a>
@@ -32,15 +32,32 @@
 
 ## Overview
 
+The website’s main goal is to improve the mental, emotional, and physical health of students by providing easy access to essential services like therapy appointments and healthy food options, all in one platform. It serves as a one-stop-shop to support students' well-being, helping them manage stress, maintain a healthy diet, and get professional mental health support.
+
 # UX - User Experience
 
 ### Key project goals
 
+1. Therapists Booking System:
+Objective: To provide students with easy access to mental health professionals and therapists for online or in-person appointments.
+
+2. Food Options & Meal Planning:
+Objective: To provide healthy, convenient food choices for students, making it easier to maintain a balanced diet, especially during stressful times like exams.
+
+3. Holistic Wellness Resources:
+Objective: To foster a well-rounded approach to student wellness, including resources for relaxation, physical activity, and stress management.
+
 ### Target Audience
+
+The Student Wellness Website that offers therapists' booking services and food options primarily targets college and university students, but it also extends to other related groups such as graduate students, international students, student-athletes, and students dealing with specific challenges like mental health concerns or time management difficulties. The audience is united by a shared need for support in balancing their academic, emotional, and physical well-being.
 
 ### Agile Methodologies
 
+This was a group project as a part of Hackathon two, so we used an agile approach to project management. The Balance and Bloom development process was broken into sprints, and tasks were added to the GitHub, tasks were assigned and project board was created to be tracked and managed through issues.
+
 ### MoSCoW Prioritization
+
+![Logo](food/static/images/board.png)
 
 ### Sprints
 
@@ -76,9 +93,25 @@
 
 - #### Booking Page:
 
+- Mobile View
+
+![Logo](therapist_booking/static/images/wireframeloginmobile.png)
+
+- Desktop View
+
+![Logo](therapist_booking/static/images/wireframe_booking.png)
+
+
+![Logo](therapist_booking/static/images/wireframeuserbookings.png)
+
 - #### Profile Page:
 
+
 ### Database Schema - Entity Relationship Diagram
+
+The ERD shown below illustrates the relationships between the users, therapists appointments, acontact page,food posts comments and ratings, and more. This is essential to demonstrate the relationships between the different models in the PostgreSQL database.
+
+![Logo](food/static/images/erd.png)
 
 # Features
 
@@ -87,37 +120,76 @@ A responsive navigation bar is in place. Concentrating on 'mobile first' design,
 
 - ### Mobile Navb-bar with toggler
 
+![Logo](food/static/images/navbarmob.png)
+
 - ### Desktop Navbar
+
+![Logo](food/static/images/navbar.png)
 
 - ### About
 
 - ### Contact
 
+A contact form is created for students to contact team.
+
+![Logo](food/static/images/contact.png)
+
 - ### Bookings
 
+![Logo](food/static/images/bookings.png)
+
 - ### Profiles
+
+![Logo](food/static/images/therapist.png)
 
 - ### Food Categories
 
 - Recipies page
 
-- CRUD Functionality of Comment and Rating Model
+![Logo](food/static/images/category.png)
+
+- Food posts
+
+![Logo](food/static/images/foodpost.png)
+
+- ### CRUD Functionality of Comment and Rating Model
 
 1. Create 
 Users are automatically assigned a profile upon registration. They can create bookings and post comments.
 
+![Logo](food/static/images/timebook.png)
+
+![Logo](food/static/images/ratings.png)
+
 2. Read
-Users can view recipies and associated information, including Booking comments.
+Users can view bookings, recipies and associated information, including ratings and comments.
+
+![Logo](food/static/images/bookings.png)
 
 3. Update
 Users have the ability to update their ratings and comments.
 
+![Logo](food/static/images/update.png)
+
 4. Delete
-Users can delete comments at any time.
+Users can delete comments/bookings at any time.
+
+![Logo](food/static/images/bookings.png)
+
 
 - ### Signup/signin Form
 
+![Logo](food/static/images/sign.png)
+
 - ### Django Alert Messages
+Every time there is a change in data the user is alerted. For example when a comment is posted, when a comment is edited, when a comment is deleted, when a booking is created, when a booking is edited or when a booking is deleted.
+
+![Logo](food/static/images/jangoalert.png)
+
+![Logo](food/static/images/commentupdate.png)
+
+![Logo](food/static/images/deletealert.png)
+
 
 - ### Future Features
 
