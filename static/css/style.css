@@ -20,6 +20,16 @@
     margin-right: 8px; /* Space between logo and text */
 }
 
+.food-heading {
+    font-size: 1.6em;      /* Large font for emphasis */
+    font-weight: bold;   /* Bold text to make it stand out */
+    color: #4a84cf;
+    margin-top: auto;         /* Dark color for good readability */
+    margin-bottom: 15px;
+    display: center;
+    justify-content: center;
+}
+
 /* Navbar Links */
 .custom-navbar .nav-link {
     color: white;
@@ -126,6 +136,19 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* food app styling */
+.category-container {
+    display: flex;              /* Enable Flexbox */
+    justify-content: center;    /* Center horizontally */
+    align-items: center;        /* Center vertically */
+    height: 100vh;              /* Full viewport height */
+    width: 100%;
+    background-image: url('/static/images/Wellness-rocks.jpg');  /* Background image URL */
+    background-size: cover;              /* Make sure the background image covers the entire container */
+    background-position: center center;  /* Position the image in the center */
+    background-repeat: no-repeat;        /* Prevent the background from repeating */
+ }
+ 
 
 /* Logout */
 

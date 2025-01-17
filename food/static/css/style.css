@@ -9,13 +9,3 @@
     background-color: #29e9c9;
     color: #23BBBB;
 }
-
-.category-container {
-
- display: flex;              /* Enable Flexbox */
-    justify-content: center;    /* Center horizontally */
-    align-items: center;        /* Center vertically */
-    height: 100vh;              /* Full viewport height */
-    width: 100%;
-
-}

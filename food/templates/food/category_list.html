@@ -4,8 +4,9 @@
 
 {% block content %}
 <div class="category-container">
-<h2 class="category-list-title">Dishes Categories</h2>             
 <div class="category-list">
+<h2 class="category-list-title">Dishes Categories</h2>             
+
     {% for item in cat_menu_list %}
     <h4 class="category-item">
         <a class="category-link" href="{% url 'category' item|slugify  %}">{{ item }}</a>
