@@ -5,6 +5,7 @@
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,59 +13,64 @@
 
 </head>
 <style>
-              
-        .video-background {
-            position: relative;
-            top: auto;
-            left: auto;
-            width: 75%;
-            height: 75%;
-            object-fit: cover;
-            z-index: -1;
-        }
+    .video-background {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 75%;
+        height: 75%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    .center {
+        text-align: center;
+    }
 </style>
+
 <body>
     <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <div>
-                <h1>Home!</h1>
-                <div style="text-align:center"> 
-                    
-                    <video class="video-background" id="video1" autoplay muted loop>
-                      <source src="{% static '/images/counselling.mp4' %}" type="video/mp4">
-                      Your browser does not support HTML video.
+
+                <div class="center">
+                    <h1 class="center">W E L C O M E 
+                        <span> <button class="btn btn-primary" onclick="playPause()">Play/Pause</button> 
+                               <button class="btn btn-primary" onclick="mutethisButton()" id="muteButton">Mute</button>
+                       </span> 
+                   </h1>
+
+                    <video class="video-background shadow-lg p-3 mb-5 bg-body rounded" id="video1" controls loop>
+                        <source src="{% static '/images/wellnesss.mp4' %}" type="video/mp4">
+                        Your browser does not support HTML video.
                     </video>
-                  </div> 
-                  
-                  <script> 
-                  var myVideo = document.getElementById("video1"); 
-                  
-                  function playPause() { 
-                    if (myVideo.paused) 
-                      myVideo.play(); 
-                    else 
-                      myVideo.pause(); 
-                  } 
-                  
-                  function makeBig() { 
-                      myVideo.width = 560; 
-                  } 
-                  
-                  function makeSmall() { 
-                      myVideo.width = 320; 
-                  } 
-                  
-                  function makeNormal() { 
-                      myVideo.width = 420; 
-                  } 
-                  </script> 
+
                 </div>
+
+                <script>
+                    myVideo = document.getElementById("video1");
+                    muteButton = document.getElementById("muteButton");
+
+                    function playPause() {
+                        if (myVideo.paused)
+                            myVideo.play();
+                        else
+                            myVideo.pause();
+                    }
+                    function mutethisButton() {
+                        console.log(myVideo.muted);
+                        myVideo.muted = ! myVideo.muted;
+                        muteButton.textContent = myVideo.muted ? 'Unmute' : 'Mute';
+                    };
+                   
+                </script>
             </div>
         </div>
     </div>
-    
+    </div>
+
 </body>
+
 </html>
 
 {% endblock %}
