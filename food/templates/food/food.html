@@ -2,6 +2,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 
+
 {% block content %}
 <div class="container">
     <!-- Title and Subtitle -->
@@ -88,8 +89,8 @@
                     <p class="approval">This comment is awaiting approval</p>
                     {% endif %}
                     {% if user.is_authenticated and comment.author == user %}
-                    <button class="btn btn-signup " data-comment_id="{{ comment.id }}">Delete</button>
-                    <button class="btn btn-edit" data-comment_id="{{ comment.id }}">Edit</button>
+                    <button class="btn btn-signup btn-primary" data-comment_id="{{ comment.id }}">Delete</button>
+                    <button class="btn btn-edit btn-primary" data-comment_id="{{ comment.id }}">Edit</button>
                     {% endif %}
                 </div>
                 <!-- Our for loop ends here -->
@@ -105,7 +106,7 @@
                 <form id="commentForm" method="post" style="margin-top: 1.3em;">
                     {{ comment_form | crispy }}
                     {% csrf_token %}
-                    <button id="submitButton" type="submit" class="btn btn-signup btn-sm btn btn-custom">Submit</button>
+                    <button id="submitButton" type="submit" class="btn btn-signup btn-sm btn btn-custom btn-primary">Submit</button>
                 </form>
                 {% else %}
                 <a href="{% url 'account_login' %}" class="login-link">

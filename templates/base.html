@@ -66,48 +66,44 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/contact/">Contact</a>
                     </li>
-                    <!-- Dropdown Section -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Bookings
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{% url 'book_time_slot' %}">Book Session</a></li>
-                            <li><a class="dropdown-item" href="{% url 'booking_list' %}">View Bookings</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/food/">Food</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="{% url 'food' %}" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li>
-                                <a class="dropdown-item" href="#">Menu item 1 &raquo;</a>
-                                <ul class="dropdown-menu dropdown-submenu">
-                                    <li>
-                                        <a class="dropdown-item" href="#">Submenu item 1</a>
-                                         </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Submenu item 2</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Submenu item 2</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a class="dropdown-item" href="#">Menu item 2</a></li>
-                            <li><a class="dropdown-item" href="#">Menu item 3</a></li>
-                        </ul>
-                    </li>
-                </ul>
 
+                    <!-- Recipes by category menu -->
+                        {% if cat_menu %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Food
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for item in cat_menu %}
+                            <li><a class="dropdown-item" href="{% url 'category' item|slugify  %}">{{ item }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle" href="{% url 'category_list' %}">Dishes Categories</a>
+                    </li>
+                    {% endif %}
+                <!-- Dropdown Section -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Bookings
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'book_time_slot' %}">Book Session</a></li>
+                        <li><a class="dropdown-item" href="{% url 'booking_list' %}">View Bookings</a></li>
+                    </ul>
+                </li>
+                </ul>
                 <!-- Right Aligned Links -->
                 <ul class="navbar-nav ms-auto">
                     <!-- Authenticated User Links -->
                     {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'food' %}">Food</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'therapist_profile' %}">Profile</a>
                     </li>
