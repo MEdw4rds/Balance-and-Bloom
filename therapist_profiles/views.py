@@ -13,9 +13,10 @@ def index(request):
 
 @login_required
 def create_or_update_profile(request):
+    # Get or create the therapist's profile
     profile, created = TherapistProfile.objects.get_or_create(user=request.user)
 
-    # Availability Formset
+    # Define the formset for Availability
     AvailabilityFormSet = modelformset_factory(
         Availability,
         form=AvailabilityForm,
@@ -23,28 +24,31 @@ def create_or_update_profile(request):
         can_delete=True
     )
 
-    # Initialize forms
-    form = TherapistProfileForm(instance=profile)
-    formset = AvailabilityFormSet(queryset=Availability.objects.filter(therapist=profile))
-
     if request.method == 'POST':
+        # Bind form and formset data
         form = TherapistProfileForm(request.POST, request.FILES, instance=profile)
         formset = AvailabilityFormSet(request.POST, queryset=Availability.objects.filter(therapist=profile))
 
         if form.is_valid() and formset.is_valid():
-            form.save()  # Save profile
+            # Save the profile
+            form.save()
 
-            # Save or delete availability
+            # Process the formset
             for availability_form in formset:
                 if availability_form.cleaned_data.get('DELETE'):
-                    if availability_form.instance.pk:
+                    if availability_form.instance.pk:  # Delete the record if it exists
                         availability_form.instance.delete()
                 else:
                     availability = availability_form.save(commit=False)
-                    availability.therapist = profile
+                    availability.therapist = profile  # Assign the therapist to the availability
                     availability.save()
 
-            return redirect('therapist_profile')  # Redirect after saving
+            return redirect('therapist_profiles')
+
+    else:
+        # Initialize form and formset for GET requests
+        form = TherapistProfileForm(instance=profile)
+        formset = AvailabilityFormSet(queryset=Availability.objects.filter(therapist=profile))
 
     return render(request, 'therapist_profiles/therapist_profile_form.html', {
         'form': form,
@@ -53,24 +57,18 @@ def create_or_update_profile(request):
 
 @login_required
 def view_profile(request):
-    try:
-        profile = TherapistProfile.objects.get(user=request.user)
-    except TherapistProfile.DoesNotExist:
-        return redirect('create_or_update_profile')
-
+    profile, created = TherapistProfile.objects.get_or_create(user=request.user)
     return render(request, 'therapist_profiles/therapist_profile.html', {'profile': profile})
-
 
 @login_required
 def view_profile_by_id(request, user_id):
     profile = get_object_or_404(TherapistProfile, user_id=user_id)
     return render(request, 'therapist_profiles/therapist_profile.html', {'profile': profile})
 
-
 @login_required
 def view_profile_by_username(request, username):
     user = get_object_or_404(User, username=username)
-    profile = get_object_or_404(TherapistProfile, user=user)
+    profile, created = TherapistProfile.objects.get_or_create(user=user)
     return render(request, 'therapist_profiles/therapist_profile.html', {'profile': profile})
 
 def therapist_profiles(request):
