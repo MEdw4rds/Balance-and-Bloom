@@ -79,6 +79,8 @@ This was a group project as a part of Hackathon two, so we used an agile approac
 
 - #### About Page:
 
+![Logo](food/static/images/contactwire.png)
+
 - #### Food Page:
 
 - Mobile View
@@ -90,6 +92,8 @@ This was a group project as a part of Hackathon two, so we used an agile approac
 ![Logo](food/static/images/desk1.png)
 
 - #### Contact Page:
+
+![Logo](food/static/images/contactwire.png)
 
 - #### Booking Page:
 
@@ -127,6 +131,8 @@ A responsive navigation bar is in place. Concentrating on 'mobile first' design,
 ![Logo](food/static/images/navbar.png)
 
 - ### About
+
+![Logo](food/static/images/aboutpage.png)
 
 - ### Contact
 
