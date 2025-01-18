@@ -161,3 +161,18 @@
     max-width: 500px;
     margin: 50px auto;
 }
+
+
+.video-background {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 75%;
+    height: 75%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.center {
+    text-align: center;
+}
