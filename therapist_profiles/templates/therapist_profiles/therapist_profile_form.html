@@ -1,84 +1,112 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Edit Profile
+Edit Profile
 {% endblock %}
 
 {% block content %}
 <div class="container mt-5">
     <h1 class="text-center mb-4">Edit Your Profile</h1>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
         {% csrf_token %}
-        
+
         <!-- Profile Fields -->
-        <h3>Profile Information</h3>
         <div class="mb-3">
-            <label for="bio" class="form-label">Bio</label>
+            <label for="id_bio" class="form-label">Bio</label>
             {{ form.bio }}
+            {% if form.bio.errors %}
+            <div class="text-danger">{{ form.bio.errors }}</div>
+            {% endif %}
         </div>
 
         <div class="mb-3">
-            <label for="credentials" class="form-label">Credentials</label>
+            <label for="id_credentials" class="form-label">Credentials</label>
             {{ form.credentials }}
+            {% if form.credentials.errors %}
+            <div class="text-danger">{{ form.credentials.errors }}</div>
+            {% endif %}
         </div>
 
         <div class="mb-3">
-            <label for="services" class="form-label">Services Offered</label>
+            <label for="id_services" class="form-label">Services Offered</label>
             {{ form.services }}
+            {% if form.services.errors %}
+            <div class="text-danger">{{ form.services.errors }}</div>
+            {% endif %}
         </div>
 
         <div class="mb-3">
-            <label for="photo" class="form-label">Profile Picture</label>
+            <label for="id_photo" class="form-label">Profile Picture</label>
             {{ form.photo }}
-            <img id="profile-preview" src="#" alt="Profile Picture Preview" class="img-thumbnail mt-3" style="display: none; width: 150px; height: 150px;">
+            {% if form.photo.errors %}
+            <div class="text-danger">{{ form.photo.errors }}</div>
+            {% endif %}
         </div>
+
+        <!-- Formset Management Form -->
+        {{ formset.management_form }}
 
         <!-- Availability Formset -->
-        <h3>Availability</h3>
+        <h3 class="mb-3">Availability</h3>
+        <button type="button" class="btn btn-outline-primary mb-3" id="add-availability">+ Add Availability</button>
         {{ formset.management_form }}
-        {% for availability_form in formset %}
-            <div class="row mb-3">
+        <div id="availability-container">
+            {% for availability_form in formset %}
+            <div class="row mb-3 align-items-center availability-item">
                 <div class="col-md-4">
                     <label>Day</label>
                     {{ availability_form.day }}
                 </div>
                 <div class="col-md-3">
                     <label>Start Time</label>
-                    {{ availability_form.start_time }}
+                    <input type="time" name="{{ availability_form.start_time.html_name }}"
+                        id="{{ availability_form.start_time.id_for_label }}"
+                        value="{{ availability_form.start_time.value }}" class="form-control">
                 </div>
                 <div class="col-md-3">
                     <label>End Time</label>
-                    {{ availability_form.end_time }}
+                    <input type="time" name="{{ availability_form.end_time.html_name }}"
+                        id="{{ availability_form.end_time.id_for_label }}"
+                        value="{{ availability_form.end_time.value }}" class="form-control">
                 </div>
                 <div class="col-md-2">
                     <label>Delete</label>
                     {{ availability_form.DELETE }}
                 </div>
             </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
 
         <!-- Submit Button -->
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between mt-4">
             <button type="submit" class="btn btn-success">Save Changes</button>
             <a href="{% url 'therapist_profile' %}" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
 </div>
 
-<!-- JavaScript for Profile Picture Preview -->
+<!-- JavaScript -->
 <script>
-    const photoInput = document.getElementById('id_photo');
-    const profilePreview = document.getElementById('profile-preview');
+    // Add and Remove Availability
+    const addAvailabilityBtn = document.getElementById('add-availability');
+    const availabilityContainer = document.getElementById('availability-container');
 
-    photoInput.addEventListener('change', function() {
-        const file = this.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                profilePreview.src = e.target.result;
-                profilePreview.style.display = 'block';
-            };
-            reader.readAsDataURL(file);
+    addAvailabilityBtn.addEventListener('click', function () {
+        const availabilityItems = document.querySelectorAll('.availability-item');
+        const clone = availabilityItems[0].cloneNode(true);
+
+        // Reset inputs in the cloned row
+        clone.querySelectorAll('input').forEach(input => {
+            if (input.type === 'time') {
+                input.value = ''; // Reset time inputs
+            }
+        });
+        availabilityContainer.appendChild(clone);
+    });
+
+    availabilityContainer.addEventListener('click', function (e) {
+        if (e.target.classList.contains('remove-availability')) {
+            e.target.closest('.availability-item').remove();
         }
     });
 </script>
