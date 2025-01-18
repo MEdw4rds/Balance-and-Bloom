@@ -144,7 +144,7 @@
     height: 100vh;              /* Full viewport height */
     width: 100%;
     background-image: url('/static/images/Wellness-rocks.jpg');  /* Background image URL */
-    background-size: cover;              /* Make sure the background image covers the entire container */
+    background-size: contain;              /* Make sure the background image covers the entire container */
     background-position: center center;  /* Position the image in the center */
     background-repeat: no-repeat;        /* Prevent the background from repeating */
  }

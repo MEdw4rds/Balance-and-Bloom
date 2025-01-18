@@ -69,6 +69,26 @@ This was a group project as a part of Hackathon two, so we used an agile approac
 
 ### User stories
 
+1. As a student I need to research project ideas so that I can choose a topic that aligns with my skills and meets the course requirements.
+
+2. As a student I need to define the purpose and target audience of my project so that I can create a solution that meets their needs effectively
+
+3. As a Site User I can click on the About link so that I can read about the site.
+
+4. As a student, I need to create wireframes for my project, so that I can visually plan and structure my pages in alignment with user needs and project requirements.
+
+5. As a student, I can register an account with my email and password so that I can access resources, book sessions, and manage my wellness activities.
+
+6. As a therapist/instructor, I can create and manage my profile so that students can view my expertise and book sessions with me.
+
+7. As a student, I can browse and book events or sessions (e.g., yoga, therapy, meditation) so that I can participate in wellness activities that suit my needs.
+
+8. As a site user I can search anytime through search bar so that I can find what I am looking for on website (moved to future features)
+
+9. As a student, I can access wellness resources such as articles, videos, and podcasts so that I can learn more about mental and physical health.
+
+10. As a Food Vendor I can add healthy foods so that students can select and order food directly (future features)
+
 ### Typography
 
 ### Colour Scheme
