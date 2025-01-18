@@ -53,13 +53,6 @@ Therapist Profiles
                         {% endif %}
                     </p>
                 </div>
-
-                <!-- Edit Profile Button -->
-                {% if logged_in_user == profile.user %}
-                <div class="card-footer text-center mt-auto">
-                    <a href="{% url 'therapist_profile' %}?edit=true" class="btn btn-primary btn-sm">Edit Profile</a>
-                </div>
-                {% endif %}
             </div>
         </div>
         {% endfor %}
