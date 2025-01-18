@@ -91,11 +91,25 @@ This was a group project as a part of Hackathon two, so we used an agile approac
 
 ### Typography
 
+Different apps were made in this project with diffrent font-styles.
+
+- Varchar from walk through project
+
+- lato, sans-serif
+
+- roboto
+
+- georgia
+
 ### Colour Scheme
+
+![Logo](food/static/images/color.png)
 
 ## Wireframes
 
 - ### Home Page Wireframes
+
+![Logo](food/static/images/homepage.png)
 
 - #### About Page:
 
@@ -129,6 +143,8 @@ This was a group project as a part of Hackathon two, so we used an agile approac
 ![Logo](therapist_booking/static/images/wireframeuserbookings.png)
 
 - #### Profile Page:
+
+![Logo](food/static/images/profilewire.png)
 
 
 ### Database Schema - Entity Relationship Diagram
@@ -219,7 +235,13 @@ Every time there is a change in data the user is alerted. For example when a com
 
 - ### Future Features
 
+- As a Food Vendor I can add healthy foods so that students can select and order food directly (future features)
+
+- As a site user I can search anytime through search bar so that I can find what I am looking for on website (moved to future features)
+
 - ### Footer
+
+![Logo](food/static/images/footer.png)
 
 # Technologies & Languages Used
 
@@ -250,13 +272,19 @@ Every time there is a change in data the user is alerted. For example when a com
 
 - ### HTML: W3C Markup Validator.
 
-Every template in Apps was checked. Code was check through HTMl validator. Results for different page source are as followed:
+Every template in Apps was checked. Code was check through HTMl validator.
+
+![Logo](food/static/images/html.png)
 
 - ### CSS: W3C CSS Validator.
 
+style sheets were checked through w3c css validator. Error were found but sorted and clear error free style sheet was updated.
+
+![Logo](food/static/images/cssvalidate.png)
+
 - ### Python: PEP8 validation to ensure code quality.
 
-# Bugs
+![Logo](food/static/images/pep8.png)
 
 # Deployment
 All code for this project was written in Visual Studio/Gitpod as the integrated development environment. GitHub was used for version control, and the application was deployed to Heroku from GitHub.
