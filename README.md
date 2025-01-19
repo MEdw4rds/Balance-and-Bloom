@@ -1,5 +1,25 @@
-## Project 
-Am I responsive
+## Project
+
+Balance and Bloom Project is designed to empower students with practical tools, supportive resources, and expert insights to foster mental well-being, resilience, and personal growth. Whether you're navigating stress, seeking mindfulness practices, or simply looking for ways to prioritize your mental health, we're here to guide you every step of the way. Join us in creating a space where students can thrive academically and emotionally, finding balance and blooming into their fullest potential.
+
+The project is part of the Code Institute's Full-Stack Developer course and focuses on Django framework, database manipulation, and CRUD functionality.
+
+Developers:
+
+-  <a href="https://github.com/MEdw4rds">Matthew Edwards</a>
+
+-  <a href="https://github.com/ArunVG1963">Arun VenuGopal</a>
+
+-  <a href="https://github.com/CapriceHolford">Caprice</a>
+
+-  <a href="https://github.com/Madiha-babri">Madiha Babri</a>
+
+Am I responsive: ![Logo](food/static/images/response.png)
+
+live site: <a href="https://balance-and-bloom-216aca79a0e2.herokuapp.com//">Balance and Bloom</a>
+
+Github repository, click <a href="https://github.com/MEdw4rds/Balance-and-Bloom">Here</a>
+
 
 # Table of Contents
 1. <a href="#Lets Renovate - Home Decorating Blog">Introduction</a>
@@ -328,6 +348,7 @@ The steps for deploying to Heroku are as follows (Experience from previous Djang
 9. Buildpack: Select Node.js and Python as the buildpacks for your project.
 10. Deploy: Once the configuration is complete, click the "Deploy Branch" button. After successful deployment, a "View" button will appear to take you to the live site.
 
-# Credits
 
 # Acknowledgements
+
+- Very special thankx to our mentors and advisors, Marko, John Rearden and Mark Briscoe for helping us at every stage. This project would not have been the same without their invaluable mentorship.
