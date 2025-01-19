@@ -10,26 +10,56 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About</title>
-<style>
-  div {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-  Pimg {
-    height: 300px;
-    width: 300px;;
+  <style>
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
     }
-</style>
+
+        .scrolling-text {
+      position: absolute;
+      bottom: -100%;
+      width: 100%;
+      text-align: center;
+      animation: scroll 14s linear infinite;
+    }
+
+    @keyframes scroll {
+      0% {
+        bottom: -100%;
+      }
+
+      100% {
+        bottom: 100%;
+      }
+    }
+
+   .about {
+    width:100%;
+    height: auto;
+   }
+   .card1 {
+    width : 50%;
+    height : auto;
+   } 
+  </style>
 </head>
-  
+
 <body>
+
   <div class="container-fluid">
-         
-        
-          <img src="{% static '/images/Wellness-rocks2.jpg' %}" class="Pimg" alt="...">
-          
-        
+
+    <div class="shadow-lg p-3 mb-5 bg-body rounded card1">
+      <img class="about" src="{% static '/images/Wellness-rocks2.jpg' %}" alt="about image">
+
+     <!-- class="scrolling-text">
+        <img src="{% static '/images/Wellness-rocks2.jpg' %}" alt="about image">
+      </div> 
+    -->
+    </div>
+
+
   </div>
 
 
