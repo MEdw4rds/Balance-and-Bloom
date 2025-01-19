@@ -9,6 +9,7 @@ from .models import BookingOneOnOne
 from .forms import BookingForm, EditBookingForm
 
 
+@login_required
 def booking_list(request):
     booking = BookingOneOnOne.objects.filter(user=request.user)
     active_bookings = booking.order_by('date', 'time_slot')
@@ -16,6 +17,7 @@ def booking_list(request):
                   {'active_bookings': active_bookings})
 
 
+@login_required
 def delete_booking(request):
     if request.method == 'POST':
         booking_id = request.POST.get('bookingoneonone_id')

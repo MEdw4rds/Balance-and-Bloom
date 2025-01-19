@@ -3,74 +3,105 @@
 {% load static %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<div class="container-fluid">
+    <!-- Welcome Section -->
+    <div class="row">
+        <div class="col">
+            <div class="center">
+                <h1 class="center"> Discover Tools for a Healthier Mind and Body
+                    <span>
+                        <button class="btn btn-primary" onclick="playPause()">Play/Pause</button>
+                        <button class="btn btn-primary" onclick="mutethisButton()" id="muteButton">Mute</button>
+                    </span>
+                </h1>
+                <video class="video-background shadow-lg p-3 mb-5 bg-body rounded" id="video1" controls loop>
+                    <source src="{% static '/images/wellnesss.mp4' %}" type="video/mp4">
+                    Your browser does not support HTML video.
+                </video>
+            </div>
+            <script>
+                myVideo = document.getElementById("video1");
+                muteButton = document.getElementById("muteButton");
 
-</head>
-<style>
-    .video-background {
-        position: relative;
-        top: auto;
-        left: auto;
-        width: 75%;
-        height: 75%;
-        object-fit: cover;
-        z-index: -1;
-    }
+                function playPause() {
+                    if (myVideo.paused)
+                        myVideo.play();
+                    else
+                        myVideo.pause();
+                }
 
-    .center {
-        text-align: center;
-    }
-</style>
+                function mutethisButton() {
+                    console.log(myVideo.muted);
+                    myVideo.muted = !myVideo.muted;
+                    muteButton.textContent = myVideo.muted ? 'Unmute' : 'Mute';
+                };
+            </script>
+        </div>
+    </div>
 
-<body>
-    <div class="container-fluid">
+    <!-- Mental Health Resources and Wellness Links Section -->
+    <div class="container mt-5 text-center">
+        <h2 class="mb-4">Mental Health Resources & Wellness Links</h2>
         <div class="row">
-            <div class="col">
-
-                <div class="center">
-                    <h1 class="center">W E L C O M E 
-                        <span> <button class="btn btn-primary" onclick="playPause()">Play/Pause</button> 
-                               <button class="btn btn-primary" onclick="mutethisButton()" id="muteButton">Mute</button>
-                       </span> 
-                   </h1>
-
-                    <video class="video-background shadow-lg p-3 mb-5 bg-body rounded" id="video1" controls loop>
-                        <source src="{% static '/images/wellnesss.mp4' %}" type="video/mp4">
-                        Your browser does not support HTML video.
-                    </video>
-
-                </div>
-
-                <script>
-                    myVideo = document.getElementById("video1");
-                    muteButton = document.getElementById("muteButton");
-
-                    function playPause() {
-                        if (myVideo.paused)
-                            myVideo.play();
-                        else
-                            myVideo.pause();
-                    }
-                    function mutethisButton() {
-                        console.log(myVideo.muted);
-                        myVideo.muted = ! myVideo.muted;
-                        muteButton.textContent = myVideo.muted ? 'Unmute' : 'Mute';
-                    };
-                   
-                </script>
+            <!-- Mental Health Resource 1 -->
+            <div class="col-md-4 mb-4">
+                <a href="https://www.mind.org.uk/information-support/drugs-and-treatments/talking-therapy-and-counselling/how-to-find-a-therapist/"
+                    target="_blank" class="text-decoration-none">
+                    <i class="fa fa-heart" style="font-size: 3rem; color: #ff6f61;"></i>
+                    <h5 class="mt-3">Therapy Resources</h5>
+                    <p>Explore therapy options and tools to support mental health.</p>
+                </a>
+            </div>
+            <!-- Mental Health Resource 2 -->
+            <div class="col-md-4 mb-4">
+                <a href="https://www.youngminds.org.uk/young-person/coping-with-life/self-care/?gad_source=1&gclid=EAIaIQobChMIy8LYguT_igMV8cVMAh3zogZeEAAYASAAEgKeQPD_BwE"
+                    target="_blank" class="text-decoration-none">
+                    <i class="fa fa-leaf" style="font-size: 3rem; color: #6c63ff;"></i>
+                    <h5 class="mt-3">Self-Care Tips</h5>
+                    <p>Discover simple, effective self-care practices for wellness.</p>
+                </a>
+            </div>
+            <!-- Mental Health Resource 3 -->
+            <div class="col-md-4 mb-4">
+                <a href="https://www.mind.org.uk/information-support/guides-to-support-and-services/seeking-help-for-a-mental-health-problem/mental-health-helplines/"
+                    target="_blank" class="text-decoration-none">
+                    <i class="fa fa-phone" style="font-size: 3rem; color: #28a745;"></i>
+                    <h5 class="mt-3">Helplines</h5>
+                    <p>Contact trusted helplines for immediate mental health support.</p>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <!-- Wellness Link 1 -->
+            <div class="col-md-4 mb-4">
+                <a href="https://www.mind.org.uk/information-support/drugs-and-treatments/mindfulness/mindfulness-exercises-tips/"
+                    target="_blank" class="text-decoration-none">
+                    <i class="fa fa-smile" style="font-size: 3rem; color: #ffc107;"></i>
+                    <h5 class="mt-3">Mindfulness</h5>
+                    <p>Learn mindfulness techniques to reduce stress and anxiety.</p>
+                </a>
+            </div>
+            <!-- Wellness Link 2 -->
+            <div class="col-md-4 mb-4">
+                <a href="https://www.mentalhealth.org.uk/explore-mental-health/publications/how-look-after-your-mental-health-using-exercise"
+                    target="_blank" class="text-decoration-none">
+                    <i class="fa fa-bicycle" style="font-size: 3rem; color: #17a2b8;"></i>
+                    <h5 class="mt-3">Exercise & Wellness</h5>
+                    <p>Incorporate physical activity into your routine for mental health.</p>
+                </a>
+            </div>
+            <!-- Wellness Link 3 -->
+            <div class="col-md-4 mb-4">
+                <a href="https://www.mind.org.uk/information-support/types-of-mental-health-problems/sleep-problems/sleep-and-mental-health/"
+                    target="_blank" class="text-decoration-none">
+                    <i class="fa fa-moon" style="font-size: 3rem; color: #563d7c;"></i>
+                    <h5 class="mt-3">Sleep Health</h5>
+                    <p>Understand the importance of sleep for mental and physical health.</p>
+                </a>
             </div>
         </div>
     </div>
-    </div>
-
-</body>
-
-</html>
+</div>
 
 {% endblock %}

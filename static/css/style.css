@@ -26,7 +26,7 @@
     color: #4a84cf;
     margin-top: auto;         /* Dark color for good readability */
     margin-bottom: 15px;
-    display: center;
+    display: flex; 
     justify-content: center;
 }
 
@@ -63,7 +63,7 @@
 }
 
 .custom-navbar .dropdown-menu .dropdown-item:hover {
-    background-color: #004085; /* Even darker blue */
+    background-color: #013e80; /* Even darker blue */
     color: #d1ecf1; /* Lighter blue text */
 }
 
@@ -144,7 +144,7 @@
     height: 100vh;              /* Full viewport height */
     width: 100%;
     background-image: url('/static/images/Wellness-rocks.jpg');  /* Background image URL */
-    background-size: cover;              /* Make sure the background image covers the entire container */
+    background-size: contain;              /* Make sure the background image covers the entire container */
     background-position: center center;  /* Position the image in the center */
     background-repeat: no-repeat;        /* Prevent the background from repeating */
  }
@@ -160,4 +160,108 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     max-width: 500px;
     margin: 50px auto;
+}
+
+
+.video-background {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 75%;
+    height: 75%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.center {
+    text-align: center;
+}
+
+.welcome-section {
+    background: linear-gradient(to bottom right, #e3f2fd, #bbdefb);
+    padding: 50px 20px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.video-background {
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+}
+
+.btn {
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #1f363d;
+    border: none;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #70a9a1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-heading {
+    font-family: 'Arial Black', sans-serif;
+    color: #212121;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px #f0f0f0;
+}
+
+/* Footer styling */
+
+.footer {
+     background-color: #5b8cc2 !important;
+     color: white; /* Ensure text is readable */
+}
+
+#socials-icon {
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1rem 0;
+    margin-bottom: -8px;
+    
+}
+
+#socials-icon li {
+    list-style-type: none;
+}
+
+#socials-icon li a {
+    color: white;
+    font-size: 1.5rem;
+}
+
+#socials-icon li a:hover {
+    color: #d1ecf1;  /* Change color on hover (can customize) */
+}
+
+/* end */
+
+
+@media (max-width: 768px) {
+    .welcome-section {
+        padding: 20px;
+    }
+
+    .welcome-heading {
+        font-size: 2rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
 }

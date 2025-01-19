@@ -69,15 +69,51 @@ This was a group project as a part of Hackathon two, so we used an agile approac
 
 ### User stories
 
+1. As a student I need to research project ideas so that I can choose a topic that aligns with my skills and meets the course requirements.
+
+2. As a student I need to define the purpose and target audience of my project so that I can create a solution that meets their needs effectively
+
+3. As a Site User I can click on the About link so that I can read about the site.
+
+4. As a student, I need to create wireframes for my project, so that I can visually plan and structure my pages in alignment with user needs and project requirements.
+
+5. As a student, I can register an account with my email and password so that I can access resources, book sessions, and manage my wellness activities.
+
+6. As a therapist/instructor, I can create and manage my profile so that students can view my expertise and book sessions with me.
+
+7. As a student, I can browse and book events or sessions (e.g., yoga, therapy, meditation) so that I can participate in wellness activities that suit my needs.
+
+8. As a site user I can search anytime through search bar so that I can find what I am looking for on website (moved to future features)
+
+9. As a student, I can access wellness resources such as articles, videos, and podcasts so that I can learn more about mental and physical health.
+
+10. As a Food Vendor I can add healthy foods so that students can select and order food directly (future features)
+
 ### Typography
 
+Different apps were made in this project with diffrent font-styles.
+
+- Varchar from walk through project
+
+- lato, sans-serif
+
+- roboto
+
+- georgia
+
 ### Colour Scheme
+
+![Logo](food/static/images/color.png)
 
 ## Wireframes
 
 - ### Home Page Wireframes
 
+![Logo](food/static/images/homepage.png)
+
 - #### About Page:
+
+![Logo](food/static/images/contactwire.png)
 
 - #### Food Page:
 
@@ -90,6 +126,8 @@ This was a group project as a part of Hackathon two, so we used an agile approac
 ![Logo](food/static/images/desk1.png)
 
 - #### Contact Page:
+
+![Logo](food/static/images/contactwire.png)
 
 - #### Booking Page:
 
@@ -105,6 +143,8 @@ This was a group project as a part of Hackathon two, so we used an agile approac
 ![Logo](therapist_booking/static/images/wireframeuserbookings.png)
 
 - #### Profile Page:
+
+![Logo](food/static/images/profilewire.png)
 
 
 ### Database Schema - Entity Relationship Diagram
@@ -127,6 +167,8 @@ A responsive navigation bar is in place. Concentrating on 'mobile first' design,
 ![Logo](food/static/images/navbar.png)
 
 - ### About
+
+![Logo](food/static/images/aboutpage.png)
 
 - ### Contact
 
@@ -193,7 +235,13 @@ Every time there is a change in data the user is alerted. For example when a com
 
 - ### Future Features
 
+- As a Food Vendor I can add healthy foods so that students can select and order food directly (future features)
+
+- As a site user I can search anytime through search bar so that I can find what I am looking for on website (moved to future features)
+
 - ### Footer
+
+![Logo](food/static/images/footer.png)
 
 # Technologies & Languages Used
 
@@ -224,13 +272,19 @@ Every time there is a change in data the user is alerted. For example when a com
 
 - ### HTML: W3C Markup Validator.
 
-Every template in Apps was checked. Code was check through HTMl validator. Results for different page source are as followed:
+Every template in Apps was checked. Code was check through HTMl validator.
+
+![Logo](food/static/images/html.png)
 
 - ### CSS: W3C CSS Validator.
 
+style sheets were checked through w3c css validator. Error were found but sorted and clear error free style sheet was updated.
+
+![Logo](food/static/images/cssvalidate.png)
+
 - ### Python: PEP8 validation to ensure code quality.
 
-# Bugs
+![Logo](food/static/images/pep8.png)
 
 # Deployment
 All code for this project was written in Visual Studio/Gitpod as the integrated development environment. GitHub was used for version control, and the application was deployed to Heroku from GitHub.

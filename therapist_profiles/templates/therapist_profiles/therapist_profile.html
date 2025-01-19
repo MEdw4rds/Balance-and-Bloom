@@ -52,14 +52,31 @@ Therapist Profiles
                         No services listed.
                         {% endif %}
                     </p>
-                </div>
 
-                <!-- Edit Profile Button -->
-                {% if logged_in_user == profile.user %}
-                <div class="card-footer text-center mt-auto">
-                    <a href="{% url 'therapist_profile' %}?edit=true" class="btn btn-primary btn-sm">Edit Profile</a>
+                    <!-- Availability -->
+                    <p><strong>Availability:</strong></p>
+                    <ul>
+                        {% with profile.availability_set.all as availability %}
+                        {% if availability %}
+                        {% for slot in availability %}
+                        <li>
+                            <strong>Day:</strong> {{ slot.day }} |
+                            <strong>Start:</strong> {{ slot.start_time|time:"H:i" }} |
+                            <strong>End:</strong> {{ slot.end_time|time:"H:i" }}
+                        </li>
+                        {% endfor %}
+                        {% else %}
+                        <li>No availability listed.</li>
+                        {% endif %}
+                        {% endwith %}
+                    </ul>
+
+                    <!-- Edit Profile Button (only for the logged-in user's profile) -->
+                    {% if profile.user == logged_in_user %}
+                    <a href="{% url 'create_or_update_profile' %}" class="btn btn-primary mt-auto">Edit Your Profile</a>
+                    {% endif %}
+                    
                 </div>
-                {% endif %}
             </div>
         </div>
         {% endfor %}
