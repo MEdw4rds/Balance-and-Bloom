@@ -1,7 +1,7 @@
 /* edit_bookings.html and book_time_slot.html*/
 
 .booking-heading {
-    color: #FFA630;
+    color: #000;
 }
 
 .bookings-container {
@@ -88,13 +88,7 @@
     display: inline-block;
     margin: 15px 5px;
     padding: 10px 20px;
-    background-color: #FFA630;
     color: #000;
     text-decoration: none;
     border-radius: 5px;
-}
-
-.action-buttons .btn:hover {
-    background-color: #ae7121;
-    color: #fff;
 }
