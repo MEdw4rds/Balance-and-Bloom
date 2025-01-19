@@ -267,6 +267,10 @@
 }
 
 /* social media div in footer */
+.footer{
+    margin-top: auto;
+}
+
 .socialmedia {
     display: inline-block;
 }
