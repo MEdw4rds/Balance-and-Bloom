@@ -38,8 +38,7 @@
                         }, 'google_translate_element');
                     }
                 </script>
-                <script
-                    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
             </div>
 
             <!-- Brand Logo -->
@@ -71,7 +70,7 @@
                     </li>
 
                     <!-- Recipes by category menu -->
-                        {% if cat_menu %}
+                    {% if cat_menu %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -88,17 +87,17 @@
                         <a class="nav-link dropdown-toggle" href="{% url 'category_list' %}">Dishes Categories</a>
                     </li>
                     {% endif %}
-                <!-- Dropdown Section -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Bookings
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'book_time_slot' %}">Book Session</a></li>
-                        <li><a class="dropdown-item" href="{% url 'booking_list' %}">View Bookings</a></li>
-                    </ul>
-                </li>
+                    <!-- Dropdown Section -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Bookings
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'book_time_slot' %}">Book Session</a></li>
+                            <li><a class="dropdown-item" href="{% url 'booking_list' %}">View Bookings</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <!-- Right Aligned Links -->
                 <ul class="navbar-nav ms-auto">
@@ -135,7 +134,7 @@
     </div>
     {% endif %}
 
-    
+
     <main>
         {% block content %}
         {% endblock %}
@@ -148,27 +147,29 @@
     <!-- Footer -->
     <footer class="bg-body-tertiary text-center py-3 footer">
         <p>&copy; 2025 Balance & Bloom </p>
-            <p>Social Links</p>
-        <ul id="socials-icon">
-            <li><a href="http://facebook.com" target="_blank" rel="noopener"
-                    aria-label="Visit our Facebook page (Opens Facebook website on a new browser)"><i
-                        class="fa-brands fa-facebook"></i></a></li>
-            <li><a href="http://twitter.com" target="_blank" rel="noopener"
-                    aria-label="Visit our Twitter page (Opens Twitter website on a new browser)"><i
-                        class="fa-brands fa-twitter"></i></a></li>
-            <li><a href="http://pinterest.com" target="_blank" rel="noopener"
-                    aria-label="Visit our Pinterest page (Opens Pinterest website on a new browser)"><i
-                        class="fa-brands fa-pinterest"></i></a></li>
-            <li><a href="http://instagram.com" target="_blank" rel="noopener"
-                    aria-label="Visit our Instagram page (Opens Instagram website on a new browser)"><i
-                        class="fa-brands fa-instagram"></i></a></li>
-            <li><a href="http://youtube.com" target="_blank" rel="noopener"
-                    aria-label="Visit our Youtube page (Opens Youtube website on a new browser)"><i
-                        class="fa-brands fa-youtube"></i></a></li>
-        </ul>
+        <p>Social Links</p>
+        <div class="socialmedia">
+            <ul id="socials-icon">
+                <li><a href="http://facebook.com" target="_blank" rel="noopener"
+                        aria-label="Visit our Facebook page (Opens Facebook website on a new browser)"><i
+                            class="fa-brands fa-facebook"></i></a></li>
+                <li><a href="http://twitter.com" target="_blank" rel="noopener"
+                        aria-label="Visit our Twitter page (Opens Twitter website on a new browser)"><i
+                            class="fa-brands fa-twitter"></i></a></li>
+                <li><a href="http://pinterest.com" target="_blank" rel="noopener"
+                        aria-label="Visit our Pinterest page (Opens Pinterest website on a new browser)"><i
+                            class="fa-brands fa-pinterest"></i></a></li>
+                <li><a href="http://instagram.com" target="_blank" rel="noopener"
+                        aria-label="Visit our Instagram page (Opens Instagram website on a new browser)"><i
+                            class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="http://youtube.com" target="_blank" rel="noopener"
+                        aria-label="Visit our Youtube page (Opens Youtube website on a new browser)"><i
+                            class="fa-brands fa-youtube"></i></a></li>
+            </ul>
+        </div>
     </footer>
 
-<script src="{% static '/js/message-time.js' %}"></script>
+    <script src="{% static '/js/message-time.js' %}"></script>
 </body>
 
 </html>

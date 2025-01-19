@@ -265,3 +265,8 @@
         padding: 8px 15px;
     }
 }
+
+/* social media div in footer */
+.socialmedia {
+    display: inline-block;
+}
