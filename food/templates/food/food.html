@@ -64,7 +64,7 @@
             </strong>
         </div>
         <div class="col-12">
-            <hr> 
+            <hr>
         </div>
     </div>
     <!-- Displaying Comments -->
@@ -97,7 +97,7 @@
                 {% endfor %}
             </div>
         </div>
-         <!-- Creating New Comments -->
+        <!-- Creating New Comments -->
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
                 {% if user.is_authenticated %}
@@ -106,7 +106,8 @@
                 <form id="commentForm" method="post" style="margin-top: 1.3em;">
                     {{ comment_form | crispy }}
                     {% csrf_token %}
-                    <button id="submitButton" type="submit" class="btn btn-signup btn-sm btn btn-custom btn-primary">Submit</button>
+                    <button id="submitButton" type="submit"
+                        class="btn btn-signup btn-sm btn btn-custom btn-primary">Submit</button>
                 </form>
                 {% else %}
                 <a href="{% url 'account_login' %}" class="login-link">

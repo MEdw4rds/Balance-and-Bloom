@@ -6,13 +6,13 @@
 
 <h1>Add category</h1>
 <br><br>
-<div class="form-group">  
- <form method="POST">
+<div class="form-group">
+    <form method="POST">
 
-     {% csrf_token %}
-     {{ form.as_p }}
-     <button class="btn btn-outline-secondary btn btn-custom">Add category</button>
-     <br>
- </form> 
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary">Add category</button>
+        <br>
+    </form>
 </div>
- {% endblock %}
+{% endblock %}
