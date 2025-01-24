@@ -43,7 +43,7 @@ def create_or_update_profile(request):
                     availability.therapist = profile  # Assign the therapist to the availability
                     availability.save()
 
-            return redirect('therapist_profiles')
+            return redirect('therapist_profile')
 
     else:
         # Initialize form and formset for GET requests
