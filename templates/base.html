@@ -57,36 +57,14 @@
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/about/">About</a>
+                        <a class="nav-link" href="{% url 'category_list' %}">Food</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/contact/">Contact</a>
+                        <a class="nav-link" href="{% url 'category_list' %}">Dishes Categories</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/food/">Food</a>
-                    </li>
-
-                    <!-- Recipes by category menu -->
-                    {% if cat_menu %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Food
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            {% for item in cat_menu %}
-                            <li><a class="dropdown-item" href="{% url 'category' item|slugify  %}">{{ item }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link dropdown-toggle" href="{% url 'category_list' %}">Dishes Categories</a>
-                    </li>
-                    {% endif %}
                     <!-- Dropdown Section -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -147,24 +125,42 @@
     <!-- Footer -->
     <footer class="bg-body-tertiary text-center py-3 footer">
         <p>&copy; 2025 Balance & Bloom </p>
-        <p>Social Links</p>
+        <li class="contact">
+            <a class="nav-link" href="{% url 'contact' %}">Contact Us Here</a>
+            <a class="nav-link" href="{% url 'about' %}">About</a>
+        </li>
         <div class="socialmedia">
             <ul id="socials-icon">
-                <li><a href="http://facebook.com" target="_blank" rel="noopener"
-                        aria-label="Visit our Facebook page (Opens Facebook website on a new browser)"><i
-                            class="fa-brands fa-facebook"></i></a></li>
-                <li><a href="http://twitter.com" target="_blank" rel="noopener"
-                        aria-label="Visit our Twitter page (Opens Twitter website on a new browser)"><i
-                            class="fa-brands fa-twitter"></i></a></li>
-                <li><a href="http://pinterest.com" target="_blank" rel="noopener"
-                        aria-label="Visit our Pinterest page (Opens Pinterest website on a new browser)"><i
-                            class="fa-brands fa-pinterest"></i></a></li>
-                <li><a href="http://instagram.com" target="_blank" rel="noopener"
-                        aria-label="Visit our Instagram page (Opens Instagram website on a new browser)"><i
-                            class="fa-brands fa-instagram"></i></a></li>
-                <li><a href="http://youtube.com" target="_blank" rel="noopener"
-                        aria-label="Visit our Youtube page (Opens Youtube website on a new browser)"><i
-                            class="fa-brands fa-youtube"></i></a></li>
+                <li>
+                    <a href="http://facebook.com" target="_blank" rel="noopener"
+                        aria-label="Visit our Facebook page (Opens Facebook website on a new browser)">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://twitter.com" target="_blank" rel="noopener"
+                        aria-label="Visit our Twitter page (Opens Twitter website on a new browser)">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://pinterest.com" target="_blank" rel="noopener"
+                        aria-label="Visit our Pinterest page (Opens Pinterest website on a new browser)">
+                        <i class="fa-brands fa-pinterest"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://instagram.com" target="_blank" rel="noopener"
+                        aria-label="Visit our Instagram page (Opens Instagram website on a new browser)">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://youtube.com" target="_blank" rel="noopener"
+                        aria-label="Visit our Youtube page (Opens Youtube website on a new browser)">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </li>
             </ul>
         </div>
     </footer>

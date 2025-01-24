@@ -7,9 +7,11 @@ from django.contrib.auth.models import User
 from django.forms import modelformset_factory
 from django.contrib import messages
 
+
 # Index view
 def index(request):
     return render(request, 'therapist_profiles/index.html')
+
 
 @login_required
 def create_or_update_profile(request):
@@ -43,7 +45,7 @@ def create_or_update_profile(request):
                     availability.therapist = profile  # Assign the therapist to the availability
                     availability.save()
 
-            return redirect('therapist_profiles')
+            return redirect('therapist_profile')
 
     else:
         # Initialize form and formset for GET requests
@@ -55,21 +57,25 @@ def create_or_update_profile(request):
         'formset': formset,
     })
 
+
 @login_required
 def view_profile(request):
     profile, created = TherapistProfile.objects.get_or_create(user=request.user)
     return render(request, 'therapist_profiles/therapist_profile.html', {'profile': profile})
+
 
 @login_required
 def view_profile_by_id(request, user_id):
     profile = get_object_or_404(TherapistProfile, user_id=user_id)
     return render(request, 'therapist_profiles/therapist_profile.html', {'profile': profile})
 
+
 @login_required
 def view_profile_by_username(request, username):
     user = get_object_or_404(User, username=username)
     profile, created = TherapistProfile.objects.get_or_create(user=user)
     return render(request, 'therapist_profiles/therapist_profile.html', {'profile': profile})
+
 
 def therapist_profiles(request):
     # Fetch all therapist profiles

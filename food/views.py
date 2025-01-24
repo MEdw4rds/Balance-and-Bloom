@@ -89,6 +89,7 @@ def post_detail(request, slug):
         },
     )
 
+
 def CategoryListView(request):
     cat_menu_list = Category.objects.all()
     return render(
@@ -133,6 +134,7 @@ def comment_edit(request, slug, comment_id):
                                  'Error updating comment!')
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
 
 # for deleting comment
 def comment_delete(request, slug, comment_id):
